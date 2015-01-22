@@ -67,6 +67,7 @@ Meteor.methods({
                 subject: subject,
                 text: text
             });
+            console.log('sendEmail called');
 
         }
     },

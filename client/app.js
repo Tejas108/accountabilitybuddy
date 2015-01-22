@@ -484,14 +484,14 @@ Template.createActionForm.events({
     }
 });
 
-Template.createActionForm.rendered = function(){
-    $('#datepicker').datepicker({
-        todayBtn: "linked",
-        keyboardNavigation: false,
-        autoclose: true,
-        todayHighlight: true
-    });
-};
+//Template.createActionForm.rendered = function(){
+//    $('#datepicker').datepicker({
+//        todayBtn: "linked",
+//        keyboardNavigation: false,
+//        autoclose: true,
+//        todayHighlight: true
+//    });
+//};
 
 Template.editActionForm.helpers({
     actionItem:function(){
@@ -556,14 +556,14 @@ Template.editActionForm.events({
 
 });
 
-Template.editActionForm.rendered = function(){
-    $('#datepicker').datepicker({
-        todayBtn: "linked",
-        keyboardNavigation: false,
-        autoclose: true,
-        todayHighlight: true
-    });
-};
+//Template.editActionForm.rendered = function(){
+//    $('#datepicker').datepicker({
+//        todayBtn: "linked",
+//        keyboardNavigation: false,
+//        autoclose: true,
+//        todayHighlight: true
+//    });
+//};
 
 // Client's View page stuff
 
