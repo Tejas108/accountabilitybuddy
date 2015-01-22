@@ -16,3 +16,6 @@ steeve:single-page-login
 mrt:moment
 mizzao:bootboxjs
 amr:parsley.js
+percolate:synced-cron
+email
+cmather:handlebars-server

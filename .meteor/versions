@@ -12,6 +12,7 @@ blaze-tools@1.0.2
 boilerplate-generator@1.0.2
 callback-hook@1.0.2
 check@1.0.4
+cmather:handlebars-server@2.0.0
 ddp@1.0.14
 deps@1.0.6
 ejson@1.0.5
@@ -54,6 +55,7 @@ mrt:moment@2.8.1
 npm-bcrypt@0.7.7
 observe-sequence@1.0.4
 ordered-dict@1.0.2
+percolate:synced-cron@1.1.1
 random@1.0.2
 reactive-dict@1.0.5
 reactive-var@1.0.4

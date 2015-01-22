@@ -5,7 +5,7 @@ Meteor.methods({
             added:function(user){
 
                 if(!user.profile.welcomeEmailSend){
-                    var text = "Welcome to your Accountability Buddy!";
+                    var text = "Welcome to your Accountability Buddy, your account has been set up! Log in at the link below.";
                     Email.send({
                         html: Handlebars.templates['newClient']({ name: user.username,text:text }),
                         from: "noreply@accountabilitybuddy.biz",
