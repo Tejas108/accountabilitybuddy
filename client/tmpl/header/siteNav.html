@@ -1,0 +1,20 @@
+<template name="siteNav">
+
+    <nav role="navigation">
+        <div class="btn-group navButtonGroup" role="group" aria-label="Button Group">
+            <button class="btn btn-primary goback">back</button>
+            {{#if currentUser.profile.isClient}}
+                <a class="btn btn-primary showAddClientForm" role="button" href="{{pathFor 'appHome'}}">Sessions</a>
+                <a class="btn btn-primary editProfile" role="button" href="{{pathFor 'viewProfile'}}">Profile</a>
+                {{else}}
+                <a class="btn btn-primary" role="button" href="{{pathFor 'appHome'}}"><span class="alertNumber">{{alertCount}}</span>Alerts</a>
+                <a class="btn btn-primary showAddClientForm" role="button" href="{{pathFor 'addClient'}}">New</a>
+                <a class="btn btn-primary viewAllClient" role="button" href="{{pathFor 'clientList'}}"><span class="alertNumber">{{activeCount}}</span>Active</a>
+                <a class="btn btn-primary viewAllClient" role="button" href="{{pathFor 'clientListInactive'}}"><span class="alertNumber">{{inactiveCount}}</span>Inactive</a>
+                <a class="btn btn-primary editProfile" role="button" href="{{pathFor 'viewProfile'}}">My Profile</a>
+            {{/if}}
+            <a href="#" class="logout btn btn-primary" role="button">Log Out</a>
+        </div>
+    </nav>
+
+</template>

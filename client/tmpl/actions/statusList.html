@@ -1,0 +1,31 @@
+<template name="statusList">
+{{#if currentUser}}
+    <select name="status" id="status" class="form-control">
+        {{#each statusItem}}
+            <option value="{{optionValue}}">{{text}}</option>
+        {{/each}}
+    </select>
+    <div class="form-group">
+        <label for="statusReason">Reason</label>
+        <input type="text" value="" name="statusReason" id="statusReason" class="form-control" />
+    </div>
+    <a href="" class="btn btn-success save" data="{{this._id}}">Save Status</a>
+    <p class="itemStatus"><span class="statusText"></span></p>
+    {{/if}}
+</template>
+
+<template name="statusListInactive">
+    {{#if currentUser}}
+    <select name="status" id="status" class="form-control">
+        {{#each statusItem}}
+            <option value="{{optionValue}}">{{text}}</option>
+        {{/each}}
+    </select>
+    <div class="form-group">
+        <label for="statusReason">Reason</label>
+        <input type="text" value="" name="statusReason" id="statusReason" class="form-control" />
+    </div>
+    <a href="" class="btn btn-success save" data="{{this._id}}">Save Status</a>
+    <p class="itemStatus"><span class="statusText"></span></p>
+    {{/if}}
+</template>

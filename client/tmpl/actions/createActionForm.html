@@ -1,0 +1,43 @@
+<template name="createActionForm">
+    {{#if currentUser}}
+        <div>
+    <header>
+        {{> clientName}}
+        <h2>Add New Action</h2>
+    </header>
+    <section id="newAction">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-wrap">
+                        <form role="form" id="newActionForm" autocomplete="off" data-parsley-validate>
+                            <div class="form-group">
+                                <label for="name">Title</label>
+                                <input type="text" name="title" id="title" class="form-control atitle" placeholder="Action Title"  required data-parsley-minlength="3">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea name="description" id="description" class="form-control adescription" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="datepicker">Due Date</label>
+                                <input type="text" class="form-control" id="datepicker" name="datepicker" required role="date">
+                            </div>
+                            <div class="btn-group btn-group-justified" role="group">
+                                <div class="btn-group">
+                                    <button type="submit" class="btn btn-success addAction">Save</button>
+                                </div>
+                                <div class="btn-group">
+                                    <button type="submit" class="btn btn-default cancelAction">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- /.col-xs-12 -->
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </section>
+        </div>
+{{/if}}
+</template>
+

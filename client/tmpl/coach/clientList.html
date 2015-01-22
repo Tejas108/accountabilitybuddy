@@ -1,0 +1,43 @@
+<template name="clientList">
+{{#if currentUser}}
+    <div>
+    <header>
+        <h1>Active Clients</h1>
+    </header>
+
+    {{#if client }}
+        {{#each client}}
+            {{>clientRow}}
+        {{/each}}
+    {{else}}
+        <p>You have no active clients</p>
+    {{/if}}
+    </div>
+{{/if}}
+</template>
+
+<template name="clientListInactive">
+{{#if currentUser}}
+    <div>
+    <header>
+        <h1>Inactive Clients</h1>
+    </header>
+
+    {{#if client }}
+            {{#each client}}
+                {{>clientRow}}
+            {{/each}}
+    {{else}}
+        <p>You have no inactive clients</p>
+    {{/if}}
+    </div>
+    {{/if}}
+</template>
+
+<template name="clientRow">
+    {{#if currentUser}}
+    {{#if this.profile.isClient}}
+        <button class="btn btn-block btn-large btn-primary btn-title clientRow">{{this.profile.name}}</button>
+    {{/if}}
+    {{/if}}
+</template>

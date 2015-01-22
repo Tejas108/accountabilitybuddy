@@ -1,0 +1,8 @@
+<template name="home">
+{{#if currentUser}}
+    <p>You're already logged in</p>
+    {{else}}
+    <a class="btn-coach btn btn-success" href="{{pathFor route='login'}}">Let's get started!</a>
+{{/if}}
+</template>
+

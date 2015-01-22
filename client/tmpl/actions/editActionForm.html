@@ -1,0 +1,63 @@
+<template name="editActionForm">
+{{#if currentUser}}
+    <div>
+    <header>
+        {{> clientName}}
+        <h2>Edit Action</h2>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-wrap">
+                    {{#with actionItem}}
+                        <form role="form" id="editActionForm" autocomplete="off" data-parsley-validate>
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input type="text" name="title" id="title" class="form-control atitle" value="{{title}}" required data-parsley-minlength="3">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea name="description" id="description" class="form-control adescription" rows="3" required>{{description}}</textarea>
+                            </div>
+                            {{#if this.alert}}
+                            <div class="status-container">
+                                <p>Current Status: {{status}}<br/>Reason: {{status_reason}}</p>
+                                <label for="resetStatus">Would you like to reset the status of this Action?</label>
+                                <select name="resetStatus" id="resetStatus" class="form-control">
+                                    <option value="no">No, thank you</option>
+                                    <option value="yes">Yes, remove status from this action</option>
+                                </select>
+                            </div>
+                            {{/if}}
+                            <div class="form-group">
+                                <label for="datepicker">Due Date: </label>
+                                <input type="text" class="form-control" id="datepicker" name="datepicker" value="{{date dueDate}}" required role="date">
+                            </div>
+                            <div class="btn-group btn-group-justified">
+                                <div class="btn-group">
+                                    <button type="submit" class="btn btn-success editAction">Save</button>
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn btn-default cancelAction">Cancel</button>
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn btn-danger deleteAction">Delete</button>
+                                </div>
+                            </div>
+                        </form>
+                    {{/with}}
+                </div>
+            </div> <!-- /.col-xs-12 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    </div>
+    {{/if}}
+</template>
+
+<!--<template name="statusListEditAction">-->
+    <!--<select name="status" id="status">-->
+        <!--{{#each statusItem}}-->
+            <!--<option value="{{optionValue}}">{{text}}</option>-->
+        <!--{{/each}}-->
+    <!--</select>-->
+<!--</template>-->

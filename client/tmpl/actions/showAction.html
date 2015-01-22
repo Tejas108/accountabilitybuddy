@@ -1,0 +1,10 @@
+<template name="showAction">
+    {{#if currentUser }}
+    <h1>Action</h1>
+    {{#with actionItem}}
+        {{title}}
+        {{description}}
+        {{dateCreated}}
+{{/with}}
+    {{/if}}
+</template>

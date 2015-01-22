@@ -1,0 +1,57 @@
+<template name="editClientForm">
+    {{#if currentUser}}
+        <div>
+    <header>
+        <h2>Edit Client</h2>
+    </header>
+        {{#with client}}
+        <div class="container">
+            <div class="row">
+                <div class="errors"></div>
+                <div class="col-xs-12">
+                    <div class="form-wrap">
+                        <form role="form" id="editUserForm">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" id="name" class="form-control name"  required data-parsley-minlength="3" value="{{profile.name}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" name="email" id="email" class="form-control email"  required data-parsley-type="email" value="{{profile.email}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" name="phone" id="phone" class="form-control phone"  data-parsley-type="digits" value="{{profile.phone}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="isActive">Client Status:</label>
+                                <select name="isActive" id="isActive" class="form-control isActive">
+                                    {{#if equals this.profile.isActive true}}
+                                    <option value="true" selected>Active</option>
+                                    <option value="false">Inactive</option>
+                                    {{else}}
+                                        <option value="true">Active</option>
+                                        <option value="false" selected>Inactive</option>
+                                    {{/if}}
+                                </select>
+                            </div>
+                            <div class="btn-group btn-group-justified" role="group">
+                                <div class="btn-group">
+                                    <button type="submit" class="btn btn-block btn-success save">Save</button>
+                                </div>
+                                <div class="btn-group">
+                                    <button type="submit" class="btn btn-block btn-default cancel">Cancel</button>
+                                </div>
+                                <div class="btn-group">
+                                    <button type="submit" class="btn btn-block btn-danger delete">Delete</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- /.col-xs-12 -->
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+        {{/with}}
+        </div>
+    {{/if}}
+</template>

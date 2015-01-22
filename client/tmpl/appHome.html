@@ -1,0 +1,31 @@
+<template name="appHome">
+    <div>
+    {{#if currentUser.profile.isClient}}
+        {{> clientSessionsList}}
+    {{else}}
+    <h1>Your Alerts</h1>
+        {{#each client}}
+    <ul class="list-group client" style="list-style-type: none;">
+        <li>
+            <button data="{{this._id}}" class="client-alert-title btn btn-primary btn-block btn-large btn-title">{{this.profile.name}} has actions that need attention</button>
+            <br />
+            <!--<button data="{{this._id}}" class="client-alert-title" btn btn-primary>{{this.profile.name}} has actions that need attention</button>-->
+            <!--<p><a href="tel:{{this.profile.phone}}" class="btn btn-primary" role="button">Call Client</a></p>-->
+            {{> actionAlerts}}
+        </li>
+    </ul>
+    {{/each}}
+    {{/if}}
+        </div>
+</template>
+
+<template name="actionAlerts">
+    <ul class=" list-group actionList">
+        {{#each alerts}}
+            <li data="{{this._id}}" class="action list-group-item">
+                <p>Action: {{title}}<br/><strong>{{status}}</strong><br/>Reason: <em>{{status_reason}}</em></p><br />
+               <p><button class="btn btn-large btn-warning btn-block edit">Edit This Action</button></p>
+            </li>
+        {{/each}}
+    </ul>
+</template>

@@ -1,0 +1,18 @@
+
+<head>
+  <title>Accountability Buddy</title>
+    <meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no">
+</head>
+
+<template name="layoutMain">
+    {{#if currentUser}}
+  {{> appHeader}}
+    {{/if}}
+    <div class="container container-full">
+        <section role="main">
+          {{> flashMessages}}
+                {{>yield}}
+        </section>
+    </div>
+
+</template>

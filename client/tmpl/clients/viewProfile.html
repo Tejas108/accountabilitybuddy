@@ -1,0 +1,16 @@
+<template name="viewProfile">
+    {{#if currentUser}}
+    <div>
+        <header>
+            <h1>Your Profile</h1>
+        </header>
+    {{#with viewProfile}}
+        <p>Name: {{profile.name}}</p>
+        <p>Username: {{username}}</p>
+        <p>Email: {{profile.email}}</p>
+        <p>Phone: {{profile.phone}}</p>
+    {{/with}}
+        <p><button class="edit btn btn-primary">Edit Your Information</button></p>
+    </div>
+{{/if}}
+</template>

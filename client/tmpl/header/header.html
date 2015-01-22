@@ -1,0 +1,15 @@
+<template name="appHeader">
+    {{> siteNav}}
+    <!--{{> subHeaders}}-->
+</template>
+
+<template name="subHeaders">
+    {{#if isClient}}
+        <h2>Client Home</h2>
+    {{else}}
+        <h2>Coach Home</h2>
+        <!--{{#if showAddClientForm}}-->
+            <!--{{> addClientForm}}-->
+        <!--{{/if}}-->
+    {{/if}}
+</template>
