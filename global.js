@@ -42,6 +42,10 @@ if(Meteor.isClient) {
         autoScroll: true
     });
 
+    Meteor.startup(function(){
+
+    })
+
 }
 
 if(Meteor.isServer){
