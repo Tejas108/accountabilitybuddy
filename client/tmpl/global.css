@@ -1,13 +1,59 @@
-/* CSS declarations go here */
 
 /*.container-full {*/
     /*margin: 0 auto;*/
     /*width: 100%;*/
 /*}*/
 
+/* General */
+body {
+    background: url('frog-blur.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+/* Typography */
+
+body{
+    line-height: 1.25em;
+    font-family: 'Open Sans',sans-serif;
+    padding-top: 70px;
+}
+
+h1 {
+    font-size: 2em;
+    line-height: 1.25em;
+    font-family: 'Raleway';
+    color: #fff;
+}
+
+h2 {
+    font-size: 1.625em;
+    line-height: 1.15384615em;
+}
+
+h3 {
+    font-size: 1.375em;
+    line-height: 1.13636364em;
+}
+
+/* Layout */
+
 section {
     position: relative;
 }
+
+section header {
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+.container.container-full {
+    /*padding-top: 90px;*/
+}
+
+
+
+
 
 .navButtonGroup {
     float:right;
@@ -76,16 +122,10 @@ section {
     text-align: center;
 }
 
-.container.container-full {
-    padding-top: 90px;
-}
+
 
 .itemStatus {
     display: none;
-}
-
-.navbar-default  {
-
 }
 
 .actionRow  {
@@ -104,7 +144,7 @@ section {
 
 /* Alerts */
 .client .actionList {
-    display: none;
+    /*display: none;*/
 }
 
 .alertNumber {
@@ -141,6 +181,38 @@ section {
 .btn-title {
     text-align: left;
     color: #fff;
+}
+
+.btn {
+    border-radius: 0;
+    color: #fff;
+}
+
+.btn-primary {
+    color: #fff;
+    border-color: #fff;
+    background: transparent;
+}
+
+.btn-primary:active,.btn-primary:focus {
+    background: #fff;
+    color: #000;
+}
+
+.btn-success, .btn-default {
+    background: transparent;
+}
+
+.btn-success:active {
+    background: #4cae4c;
+}
+
+.btn-default {
+    border-color: #fff;
+}
+
+.btn-default:active {
+    background: #fff;
 }
 
 #accordion .panel-title > a {
@@ -186,4 +258,165 @@ textarea.parsley-error {
 
 .right {
     float: right;
+}
+
+
+/* Navigation */
+@media (max-width: 2000px) {
+    .navbar-header {
+        float: none;
+        text-align: center;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }
+}
+
+/* Header */
+.navbar-back {
+    float: left;
+    height: 51px;
+    /* padding: 15px; */
+    font-size: 3em;
+    color: #fff;
+    width: 57px;
+    /* margin-top: 5px; */
+    padding-top: 4px;
+}
+
+.navbar-back a:active,.navbar-back a:focus {
+    color: #fff;
+}
+#header-nav .alertNumber {
+    background: red;
+    border-radius: 0.8em;
+    -moz-border-radius: 0.8em;
+    -webkit-border-radius: 0.8em;
+    color: #355D93;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.45em;
+    margin-right: 5px;
+    text-align: center;
+    width: 1.45em;
+    position: relative;
+    left: 41px;
+    display: inline-block;
+    z-index: 2;
+    top: -16px;
+}
+
+
+#header-nav {
+    background: rgba(0,0,0, 0.8);
+}
+
+.header-alert {
+    margin-top: 5px;
+}
+
+.header-alert {
+    color: #fff;
+}
+
+.header-alert .fa-bell {
+    font-size: 2em;
+    margin-top: 11px;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #333;
+}
+
+.navbar-inverse .navbar-toggle,
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+    border: none;
+}
+
+/* Footer */
+
+#footer-nav {
+    min-height: 0;
+    /*border-top: 1px solid #fff;*/
+    /*border-bottom: 1px solid #fff;*/
+    background: rgba(0,0,0,0.7);
+}
+
+#footer-nav.navbar-fixed-bottom {
+    border: none;
+}
+
+
+#footer-nav .btn {
+    height: 50px;
+    line-height: 27px;
+    color: #fff;
+    border-radius:0;
+}
+
+#footer-nav .footer-middle {
+    /*border-left: 1px solid;*/
+    /*border-right: 1px solid;*/
+}
+
+#footer-nav .btn:active {
+    background: #fff;
+    color: #000;
+}
+
+#footer-nav .btn.active,#footer-nav .btn:active {
+    box-shadow: none;
+}
+
+/* Forms */
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #fff;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+label {
+    color: #fff;
+    font-style: italic;
+}
+input::-webkit-input-placeholder {
+    color: whitesmoke;
 }

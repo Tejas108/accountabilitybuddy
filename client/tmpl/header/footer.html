@@ -1,0 +1,21 @@
+<template name="footer">
+    <nav role="navigation" id="footer-nav" class="navbar navbar-default navbar-fixed-bottom">
+      {{#if currentUser.profile.isClient}}
+          <a class="btn btn-lg btn-block showAddClientForm" role="button" href="{{pathFor 'appHome'}}">View Sessions</a>
+          <!--<a class="editProfile" role="button" href="{{pathFor 'viewProfile'}}">Profile</a>-->
+      {{else}}
+          <div class="btn-group btn-group-justified btn-large" role="group" data-toggle="buttons">
+              <div class="btn-group">
+                  <a class="btn btn-block showAddClientForm" role="button" href="{{pathFor 'addClient'}}">New</a>
+              </div>
+              <div class="btn-group">
+                  <a class="btn btn-block footer-middle viewAllClient" role="button" href="{{pathFor 'clientList'}}"><span class="alertNumber">{{activeCount}}</span>Active</a>
+              </div>
+              <div class="btn-group">
+                  <a class="btn btn-block viewAllClient" role="button" href="{{pathFor 'clientListInactive'}}"><span class="alertNumber">{{inactiveCount}}</span>Inactive</a>
+              </div>
+          </div>
+      {{/if}}
+    </nav>
+</template>
+

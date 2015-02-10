@@ -1,68 +1,69 @@
 <template name="clientSessionsList">
-{{#if currentUser}}
-    <div>
-        <header>
-            <h1>Your Sessions</h1>
-        </header>
-    {{#if sessions}}
-        <p>Tap session title to expand, tap action title to edit</p>
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            {{#each sessions}}
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingOne">
-                        <div class="row">
-
-                            <h4 class="panel-title col-xs-9">
-                                <a class="collapsed sessionItem" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{inc}}" aria-expanded="true" aria-controls="collapse-{{inc}}">
-                                    {{title}}
-                                </a>
-                            </h4>
-
-                        </div>
-                    </div>
-                    <div id="collapse-{{inc}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{inc}}">
-                        <div class="panel-body">
-
-
-                            <div class="actionContainer">
-                                {{#each actionItem}}
-                                    {{#if actionItem}}
-                                        <div class="actionRow {{selectedActionRow}}" >
-                                            <div class="row">
-                                                <div>
-                                                    <span class="clientActionText"><strong>{{title}}</strong></span><span class="due-date-client">Due: {{dueDate}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="row actionDescriptionStatus">
-                                                <p>{{description}}</p>
-                                                    {{#if this.alert}}
-                                                        <p>Current Status: {{status}}<br/>Reason: {{status_reason}}</p>
-                                                    {{else}}
-                                                        <div class="statusSelect">
-                                                        {{#if equals currentUser.profile.isActive false}}
-                                                            {{> statusListInactive}}
-                                                            {{else}}
-                                                            {{> statusList}}
-                                                            {{/if}}
+    {{#if currentUser}}
+        <div>
+            <header>
+                <h1>Your Sessions</h1>
+            </header>
+            {{#if sessions}}
+                <p>Tap session title to expand, tap action title to edit</p>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    {{#each sessions}}
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <div class="row">
+                                    <h4 class="panel-title col-xs-9">
+                                        <a class="collapsed sessionItem" data-toggle="collapse" data-parent="#accordion"
+                                           href="#collapse-{{inc}}" aria-expanded="true"
+                                           aria-controls="collapse-{{inc}}">
+                                            {{title}}
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                            <div id="collapse-{{inc}}" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="heading-{{inc}}">
+                                <div class="panel-body">
+                                    <div class="actionContainer">
+                                        {{#each actionItem}}
+                                            {{#if actionItem}}
+                                                <div class="actionRow {{selectedActionRow}}">
+                                                    <div class="row">
+                                                        <div>
+                                                            <span class="clientActionText"><strong>{{title}}</strong></span><span
+                                                                class="due-date-client">Due: {{dueDate}}</span>
                                                         </div>
-                                                    {{/if}}
-                                            </div>
+                                                    </div>
+                                                    <div class="row actionDescriptionStatus">
+                                                        <p>{{description}}</p>
+                                                        {{#if this.alert}}
+                                                            <p>Current Status: {{status}}<br/>Reason: {{status_reason}}
+                                                            </p>
+                                                        {{else}}
+                                                            <div class="statusSelect">
+                                                                {{#if equals currentUser.profile.isActive false}}
+                                                                    {{> statusListInactive}}
+                                                                {{else}}
+                                                                    {{> statusList}}
+                                                                {{/if}}
+                                                            </div>
+                                                        {{/if}}
+                                                    </div>
 
-                                        </div>
-                                    {{/if}}
-                                {{else}}
-                                    <p>You have no Action Items assigned for this session yet</p>
-                                {{/each}}
+                                                </div>
+                                            {{/if}}
+                                        {{else}}
+                                            <p>You have no Action Items assigned for this session yet</p>
+                                        {{/each}}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    {{/each}}
                 </div>
-            {{/each}}
+            {{else}}
+                <p>You have no sessions assigned</p>
+            {{/if}}
         </div>
-    {{else}}
-        <p>You have no sessions assigned</p>
     {{/if}}
-    </div>
-{{/if}}
 </template>
 

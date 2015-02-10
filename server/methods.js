@@ -33,11 +33,17 @@ Meteor.methods({
     updateProfile:function(id,profileData){
         Meteor.users.update({_id:id}, {$set:profileData});
     },
+    insertAction:function(actionData){
+       Actions.insert(actionData);
+    },
     updateActions:function(id,actionData){
         Actions.update(id, {$set:actionData});
     },
     deleteActions:function(activeAction){
         Actions.remove(activeAction);
+    },
+    insertSession:function(sessionsData){
+        Sessions.insert(sessionsData);
     },
     updateSessions:function(id,sessionsData){
         Sessions.update(id, {$set:sessionsData});

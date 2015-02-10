@@ -1,83 +1,88 @@
 <template name="clientProfile">
-{{#if currentUser}}
-    <div>
-<div class="row">
-    <div>
-            {{> clientName}}
-    </div>
-</div>
-<div class="row">
-    <div class="button-group">
-        <a class="btn btn-primary btn-sm editClient" data="{{clientEditBtn}}" role="button">Edit Client</a>
-        <a class="btn btn-primary btn-sm createSession" href="{{pathFor 'createSession'}}">Create a New Session</a>
-    </div>
-</div>
-{{#if sessions}}
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            {{#each sessions}}
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingOne">
-                        <div class="row">
-                            <button class="btn btn-danger sessionDelete" data="{{this._id}}">Delete</button>
-                            <button class="btn btn-warning sessionEdit" data="{{this._id}}">Edit</button>
-                            <h4 class="panel-title col-xs-7">
+    {{#if currentUser}}
+        <div>
+            <div class="row">
+                <div>
+                    {{> clientName}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="button-group">
+                    <a class="btn btn-primary btn-sm editClient" data="{{clientEditBtn}}" role="button">Edit Client</a>
+                    <a class="btn btn-primary btn-sm createSession" href="{{pathFor 'createSession'}}">Create a New
+                        Session</a>
+                </div>
+            </div>
+            {{#if sessions}}
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    {{#each sessions}}
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <div class="row">
+                                    <button class="btn btn-danger sessionDelete" data="{{this._id}}">Delete</button>
+                                    <button class="btn btn-warning sessionEdit" data="{{this._id}}">Edit</button>
+                                    <h4 class="panel-title col-xs-7">
 
-                                <a class="collapsed sessionItem btn btn-primary btn-large" data-toggle="collapse" role="button" data-parent="#accordion" href="#collapse-{{inc}}" aria-expanded="true" aria-controls="collapse-{{inc}}">
-                                    {{title}}
-                                </a>
-                            </h4>
-                            <div class="col-xs-3 pull-right">
-                                <a class="btn btn-primary createAction" data="{{this._id}}" role="button">+ Action</a>
+                                        <a class="collapsed sessionItem btn btn-primary btn-large"
+                                           data-toggle="collapse" role="button" data-parent="#accordion"
+                                           href="#collapse-{{inc}}" aria-expanded="true"
+                                           aria-controls="collapse-{{inc}}">
+                                            {{title}}
+                                        </a>
+                                    </h4>
+                                    <div class="col-xs-3 pull-right">
+                                        <a class="btn btn-primary createAction" data="{{this._id}}" role="button">+
+                                            Action</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapse-{{inc}}" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="heading-{{inc}}">
+                                <div class="panel-body">
+                                    <ul class="actionContainer">
+                                        {{#each actionItem}}
+                                            {{#if actionItem}}
+                                                <li class="actionRow">
+                                                    <div class="row">
+                                                        <div class="col-xs-9">
+                                                            <span class="actionText">{{title}}</span>
+                                                        </div>
+                                                        <div class="col-xs-3">
+                                                            <button class="btn btn-danger inlineDeleteActionBtn"
+                                                                    data="{{this._id}}">Delete This Action Item
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            {{/if}}
+                                        {{else}}
+                                            <li>There are currently no Action Items for this session</li>
+                                        {{/each}}
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div id="collapse-{{inc}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{inc}}">
-                        <div class="panel-body">
-
-
-                            <ul class="actionContainer">
-                            {{#each actionItem}}
-                                {{#if actionItem}}
-                                    <li class="actionRow">
-                                        <div class="row">
-                                            <div class="col-xs-9">
-                                                <span class="actionText">{{title}}</span>
-                                            </div>
-
-                                            <div class="col-xs-3">
-                                                <button class="btn btn-danger inlineDeleteActionBtn" data="{{this._id}}">Delete This Action Item</button>
-                                            </div>
-                                        </div>
-                                    </li>
-                                {{/if}}
-                                {{else}}
-                                <li>There are currently no Action Items for this session</li>
-                            {{/each}}
-                            </ul>
+                    {{/each}}
+                </div>
+                {{#if sessions}}
+                    <div class="btn-group btn-group-justified btn-large" role="group" data-toggle="buttons">
+                        <div class="btn-group">
+                            <button class="btn btn-warning showDeleteBtn">{{sessionDeleteBtn}}</button>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-warning showEditBtn">{{sessionEditBtn}}</button>
                         </div>
                     </div>
-                </div>
-            {{/each}}
-    </div>
-{{#if sessions}}
-    <div class="btn-group btn-group-justified btn-large" role="group" data-toggle="buttons">
-        <div class="btn-group">
-            <button class="btn btn-warning showDeleteBtn">{{sessionDeleteBtn}}</button>
-        </div>
-        <div class="btn-group">
-            <button class="btn btn-warning showEditBtn">{{sessionEditBtn}}</button>
-        </div>
-    </div>
-{{/if}}
-    {{else}}
-    <div class="row">There are currently no session assigned</div>
-{{/if}}
+                {{/if}}
+            {{else}}
+                <div class="row">There are currently no session assigned</div>
+            {{/if}}
 
 
-    <!-- Just for client thats logged in -->
-{{#if currentUser.profile.isClient}}
-    i'm a client
-{{/if}}
-    </div>
-{{/if}}
+            <!-- Just for client thats logged in -->
+            {{#if currentUser.profile.isClient}}
+                i'm a client
+            {{/if}}
+        </div>
+    {{/if}}
 </template>

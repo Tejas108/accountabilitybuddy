@@ -1,20 +1,51 @@
 <template name="siteNav">
 
-    <nav role="navigation">
-        <div class="btn-group navButtonGroup" role="group" aria-label="Button Group">
-            <button class="btn btn-primary goback">back</button>
-            {{#if currentUser.profile.isClient}}
-                <a class="btn btn-primary showAddClientForm" role="button" href="{{pathFor 'appHome'}}">Sessions</a>
-                <a class="btn btn-primary editProfile" role="button" href="{{pathFor 'viewProfile'}}">Profile</a>
-                {{else}}
-                <a class="btn btn-primary" role="button" href="{{pathFor 'appHome'}}"><span class="alertNumber">{{alertCount}}</span>Alerts</a>
-                <a class="btn btn-primary showAddClientForm" role="button" href="{{pathFor 'addClient'}}">New</a>
-                <a class="btn btn-primary viewAllClient" role="button" href="{{pathFor 'clientList'}}"><span class="alertNumber">{{activeCount}}</span>Active</a>
-                <a class="btn btn-primary viewAllClient" role="button" href="{{pathFor 'clientListInactive'}}"><span class="alertNumber">{{inactiveCount}}</span>Inactive</a>
-                <a class="btn btn-primary editProfile" role="button" href="{{pathFor 'viewProfile'}}">My Profile</a>
-            {{/if}}
-            <a href="#" class="logout btn btn-primary" role="button">Log Out</a>
+    <nav id="header-nav" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <a class="navbar-back goback" href="#"><i class="fa fa-angle-left"></i></a>
+            {{#if currentUser.profile.isClient}}{{else}}<a class="header-alert" href="{{pathFor 'appHome'}}"><span
+                    class="alertNumber">{{alertCount}}</span><i class="fa fa-bell"></i></a>{{/if}}
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a class="about" href="{{pathFor 'about'}}">About</a></li>
+                <li><a class="editProfile" href="{{pathFor 'viewProfile'}}">My Profile</a></li>
+                <li><a href="#" class="logout">Log Out</a></li>
+            </ul>
         </div>
     </nav>
+    <!--<nav role="navigation" class="navbar navbar-default navbar-fixed-top">-->
+        <!--{{#if currentUser.profile.isClient}}-->
+    <!--<a class="showAddClientForm" href="{{pathFor 'appHome'}}">Sessions</a>-->
+    <!--<a class="editProfile" href="{{pathFor 'viewProfile'}}">Profile</a>-->
+        <!--{{else}}-->
+    <!--<a class="" role="button" href="{{pathFor 'appHome'}}"><span class="alertNumber">{{alertCount}}</span>Alerts</a>-->
+    <!--<a class="showAddClientForm" href="{{pathFor 'addClient'}}">New</a>-->
+    <!--<a class="viewAllClient" href="{{pathFor 'clientList'}}"><span class="alertNumber">{{activeCount}}</span>Active</a>-->
+    <!--<a class="viewAllClient" href="{{pathFor 'clientListInactive'}}"><span class="alertNumber">{{inactiveCount}}</span>Inactive</a>-->
+    <!--<a class="editProfile" href="{{pathFor 'viewProfile'}}">My Profile</a>-->
+        <!--{{/if}}-->
+    <!--<a href="#" class="logout">Log Out</a>-->
+
+    <!--&lt;!&ndash;<div class="btn-group navButtonGroup" role="group" aria-label="Button Group">&ndash;&gt;-->
+    <!--&lt;!&ndash;<button class="btn btn-primary goback">back</button>&ndash;&gt;-->
+    {{#if currentUser.profile.isClient}}
+        <!--&lt;!&ndash;<a class="btn btn-primary showAddClientForm" role="button" href="{{pathFor 'appHome'}}">Sessions</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a class="btn btn-primary editProfile" role="button" href="{{pathFor 'viewProfile'}}">Profile</a>&ndash;&gt;-->
+    {{else}}
+        <!--&lt;!&ndash;<a class="btn btn-primary" role="button" href="{{pathFor 'appHome'}}"><span class="alertNumber">{{alertCount}}</span>Alerts</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a class="btn btn-primary showAddClientForm" role="button" href="{{pathFor 'addClient'}}">New</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a class="btn btn-primary viewAllClient" role="button" href="{{pathFor 'clientList'}}"><span class="alertNumber">{{activeCount}}</span>Active</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a class="btn btn-primary viewAllClient" role="button" href="{{pathFor 'clientListInactive'}}"><span class="alertNumber">{{inactiveCount}}</span>Inactive</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a class="btn btn-primary editProfile" role="button" href="{{pathFor 'viewProfile'}}">My Profile</a>&ndash;&gt;-->
+    {{/if}}
+    <!--&lt;!&ndash;<a href="#" class="logout btn btn-primary" role="button">Log Out</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</nav>-->
 
 </template>

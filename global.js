@@ -43,7 +43,7 @@ if(Meteor.isClient) {
     });
 
     Meteor.startup(function(){
-
+        $('#simple-menu').sidr();
     })
 
 }
@@ -72,7 +72,7 @@ SinglePageLogin.config({
     routeAfterSignUp: '/editProfile',
     routeAfterLogout: '/',
     forceLogin: true,
-    exceptRoutes: ['signup']
+    exceptRoutes: ['signup', 'app']
 });
 
 getCoach = function(id){
