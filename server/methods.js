@@ -39,8 +39,8 @@ Meteor.methods({
     updateActions:function(id,actionData){
         Actions.update(id, {$set:actionData});
     },
-    deleteActions:function(activeAction){
-        Actions.remove(activeAction);
+    deleteActions:function(id){
+        Actions.remove(id);
     },
     insertSession:function(sessionsData){
         Sessions.insert(sessionsData);
@@ -51,6 +51,10 @@ Meteor.methods({
     deleteSessions:function(id){
         Sessions.remove({clientID:id});
         Actions.remove({client:id});
+    },
+    deleteSingleSession:function(id){
+        Sessions.remove(id);
+        Actions.remove({sessionID:id});
     },
     updateActionStatus:function(id,statusData){
         Actions.update(id, {$set:statusData});

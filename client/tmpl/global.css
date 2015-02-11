@@ -11,6 +11,10 @@ body {
     background-size: cover;
 }
 
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 /* Typography */
 
 body{
@@ -19,11 +23,15 @@ body{
     padding-top: 70px;
 }
 
+header h1, header h2 {
+    color: #fff;
+}
+
 h1 {
     font-size: 2em;
     line-height: 1.25em;
     font-family: 'Raleway';
-    color: #fff;
+    letter-spacing: 3px;
 }
 
 h2 {
@@ -34,6 +42,14 @@ h2 {
 h3 {
     font-size: 1.375em;
     line-height: 1.13636364em;
+}
+
+p {
+    color: #fff;
+}
+
+.client-title {
+    color: #fff;
 }
 
 /* Layout */
@@ -51,23 +67,20 @@ section header {
     /*padding-top: 90px;*/
 }
 
+.container, .container-full {
+    padding-bottom: 6em;
 
+}
 
-
+.edit-create-btns {
+    text-align: center;
+    margin: 1.3em 0 2em 0;
+}
 
 .navButtonGroup {
     float:right;
     margin-right: 20px;
     margin-top: 8px;
-}
-
-.actionRow:hover {
-    cursor: pointer;
-}
-
-#accordion .panel-title > a {
-    display: block;
-    text-decoration: none;
 }
 
 .createAction {
@@ -80,39 +93,9 @@ section header {
     display: none;
 }
 
-.panel-body {
-    padding: 0;
-}
-
-.actionContainer {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-.actionRow {
-    background: cornsilk;
-    line-height: 4em;
-    border-bottom: 1px solid rgb(169, 153, 87);
-}
-
-.actionRow:last-child {
-    border-bottom: none;
-}
-
-.actionText {
-    padding-left: 15px;
-    display: block;
-}
-
-.deleteActionBtn {
-    float: right;
-    margin-top: 10px;
-    margin-right: 15px;
-}
-
 .clientRow {
     cursor: pointer;
+    height: 60px;
 }
 
 .client-title {
@@ -123,13 +106,8 @@ section header {
 }
 
 
-
 .itemStatus {
     display: none;
-}
-
-.actionRow  {
-    padding: 0 15px 0 15px;
 }
 
 .clientActionText {
@@ -197,14 +175,25 @@ section header {
 .btn-primary:active,.btn-primary:focus {
     background: #fff;
     color: #000;
+    box-shadow: none;
+    border-color: #fff;
 }
 
 .btn-success, .btn-default {
     background: transparent;
 }
 
-.btn-success:active {
+.btn-success:active,.btn-primary.createAction:active {
     background: #4cae4c;
+    color: #fff;
+}
+
+.btn-primary.createAction:active .fa-plus {
+    color: #fff;
+}
+
+.btn-primary.createAction {
+    border-color: #4cae4c;
 }
 
 .btn-default {
@@ -213,10 +202,46 @@ section header {
 
 .btn-default:active {
     background: #fff;
+    border-color: #fff;
 }
 
-#accordion .panel-title > a {
-    text-align: left;
+.btn-primary.createSession {
+    border-left: none;
+}
+
+.btn-danger {
+    background: transparent;
+}
+
+.btn-danger:active {
+    background: #d9534f;
+    box-shadow: none;
+}
+
+.btn-danger .fa-times {
+     color:#d9534f;
+}
+
+.btn-danger:active .fa-times {
+    color:#fff;
+}
+
+.fa-plus {
+   color: #4cae4c;
+}
+
+.btn-warning, .btn-warning:disabled {
+    background: transparent;
+}
+
+.btn-warning.active,.btn-warning:focus {
+    background: #eea236;
+    color: #fff;
+    box-shadow: none;
+}
+
+.showEditBtn {
+    border-left: none;
 }
 
 /* Error Styles */
@@ -273,6 +298,9 @@ textarea.parsley-error {
     .navbar-toggle {
         display: block;
     }
+    .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+        background: transparent;
+    }
     .navbar-collapse {
         border-top: 1px solid transparent;
         box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
@@ -301,6 +329,14 @@ textarea.parsley-error {
 }
 
 /* Header */
+
+.navbar-inverse .navbar-nav > li > a:active {
+    background: #fff;
+    color: #9d9d9d;
+}
+
+
+
 .navbar-back {
     float: left;
     height: 51px;
@@ -316,11 +352,11 @@ textarea.parsley-error {
     color: #fff;
 }
 #header-nav .alertNumber {
-    background: red;
+    background: #d43f3a;
     border-radius: 0.8em;
     -moz-border-radius: 0.8em;
     -webkit-border-radius: 0.8em;
-    color: #355D93;
+    color: #fff;
     display: inline-block;
     font-weight: bold;
     line-height: 1.45em;
@@ -328,10 +364,11 @@ textarea.parsley-error {
     text-align: center;
     width: 1.45em;
     position: relative;
-    left: 41px;
+    left: 38px;
     display: inline-block;
     z-index: 2;
     top: -16px;
+    font-size: .8em;
 }
 
 
@@ -375,6 +412,9 @@ textarea.parsley-error {
     border: none;
 }
 
+#footer-nav .alertNumber {
+    color: #000;
+}
 
 #footer-nav .btn {
     height: 50px;
@@ -413,10 +453,174 @@ textarea.parsley-error {
     box-shadow: none;
 }
 
+.status-container select {
+    border: 1px solid #fff;
+    border-radius: 0;
+    margin: .5em 0;
+}
+
 label {
     color: #fff;
-    font-style: italic;
+    /*font-style: italic;*/
 }
+
 input::-webkit-input-placeholder {
     color: whitesmoke;
+}
+
+/* login */
+.profile-img {
+    display: none;
+}
+
+.account-wall {
+    background: none;
+    box-shadow: none;
+}
+
+
+
+
+/* Collapse List */
+
+p {
+    font-size: .8em;
+    margin-left: 7px;
+}
+
+#accordion .panel-title > a {
+    text-align: left;
+    /*margin-left: 10px;*/
+    border: none;
+    display: block;
+    text-decoration: none;
+    width: 90%;
+}
+
+#accordion .panel-title > a:active,
+#accordion .panel-title > a:focus {
+    background: transparent;
+    outline: none;
+    color: #fff;
+}
+
+.inlineDeleteActionBtn {
+    /*margin-left: -4px;*/
+}
+
+.panel-title.col-xs-9 {
+    padding: 0;
+}
+
+.panel, .panel-default, .panel-heading {
+    border-radius: 0;
+    background: transparent;
+    border-color: #fff;
+    box-shadow: none;
+}
+
+.panel-body {
+    padding: 0;
+}
+
+.panel-default > .panel-heading {
+    color: #fff;
+    background: transparent;
+    border-color: #fff;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding: 10px 5px 10px 10px;
+}
+
+.panel-group .panel {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    background: rgba(0,0,0, 0.3);
+}
+
+.panel-group .panel-heading + .panel-collapse > .panel-body {
+    border-top: none;
+}
+
+.actionRow:hover {
+    cursor: pointer;
+}
+
+.actionRow  {
+    padding: 0 15px 0 15px;
+}
+
+.actionRow .col-xs-10 {
+    /*margin-left: -7px;*/
+}
+
+.actionContainer {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.actionRow {
+    background: rgba(255,255,255, 0.2);
+    line-height: 4em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-left: 7px;
+    padding-right: 0;
+}
+
+.actionRow:last-child {
+    border-bottom: none;
+}
+
+.actionText {
+    /*padding-left: 15px;*/
+    display: block;
+    color: #fff;
+}
+
+.deleteActionBtn {
+    float: right;
+    margin-top: 10px;
+    margin-right: 15px;
+}
+
+.navbar-back .goback:focus {
+    color: #fff;
+}
+
+/* Coach Alert Lists */
+.client-alert-title,.client-alert-title:focus {
+    border-left: none;
+    border-right: none;
+    background: rgba(0,0,0,0.3);
+    color: #fff;
+}
+
+
+.action.list-group-item {
+    background: rgba(255,255,255, 0.2);
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0, 0.5);
+    border-radius: 0;
+}
+
+.action.list-group-item p {
+    font-size: 1em;
+}
+
+.action.list-group-item p:first-child {
+    line-height: 2.2em;
+}
+
+/* Profile */
+.profile-container p{
+    font-size: 1em;
+}
+
+.profile-container .white-box {
+    padding: 10px;
+    background: rgba(255,255,255, 0.2);
+    margin-bottom: 2em;
 }

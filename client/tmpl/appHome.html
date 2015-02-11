@@ -6,13 +6,13 @@
             <header>
                 <h1>Your Alerts</h1>
             </header>
+        <p>Tap title to expand</p>
             {{#each client}}
                 <ul class="list-group client" style="list-style-type: none;">
                     <li>
                         <button data="{{this._id}}"
                                 class="client-alert-title btn btn-primary btn-block btn-large btn-title">{{this.profile.name}}
                         </button>
-                        <br/>
                         <!--<button data="{{this._id}}" class="client-alert-title" btn btn-primary>{{this.profile.name}} has actions that need attention</button>-->
                         <!--<p><a href="tel:{{this.profile.phone}}" class="btn btn-primary" role="button">Call Client</a></p>-->
                         {{> actionAlerts}}
@@ -35,4 +35,5 @@
             </li>
         {{/each}}
     </ul>
+    <br>
 </template>

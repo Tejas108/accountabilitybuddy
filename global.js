@@ -43,7 +43,7 @@ if(Meteor.isClient) {
     });
 
     Meteor.startup(function(){
-        $('#simple-menu').sidr();
+
     })
 
 }
