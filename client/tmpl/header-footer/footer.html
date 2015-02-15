@@ -1,6 +1,7 @@
 <template name="footer">
     {{#if currentUser }}
         <nav role="navigation" id="footer-nav" class="navbar navbar-default navbar-fixed-bottom">
+            {{> flashMessages}}
             {{#if currentUser.profile.isClient}}
                 <a class="btn btn-lg btn-block showAddClientForm" role="button" href="{{pathFor 'appHome'}}">View
                     Sessions</a>

@@ -11,10 +11,13 @@ body {
     background-size: cover;
 }
 
-* {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+* {-webkit-tap-highlight-color: rgba(0,0,0,0);
+    outline: none;
 }
-
+*:focus {
+    outline-color: transparent;
+    outline-style: none;
+}
 /* Typography */
 
 body{
@@ -27,10 +30,11 @@ header h1, header h2 {
     color: #fff;
 }
 
-h1 {
+h1, .login-title {
     font-size: 2em;
     line-height: 1.25em;
     font-family: 'Raleway';
+    color: #fff;
     letter-spacing: 3px;
 }
 
@@ -96,6 +100,15 @@ section header {
 .clientRow {
     cursor: pointer;
     height: 60px;
+    border-right: none;
+    border-left: none;
+    margin-bottom: .5em;
+    background: rgba(0,0,0,0.3) !important;
+    text-align: left;
+}
+
+.clientRow:active,.clientRow:focus {
+    background: #fff !important;
 }
 
 .client-title {
@@ -238,6 +251,10 @@ section header {
     background: #eea236;
     color: #fff;
     box-shadow: none;
+}
+
+.glyphicon-pencil {
+    color: #eea236;
 }
 
 .showEditBtn {
@@ -405,7 +422,7 @@ textarea.parsley-error {
     min-height: 0;
     /*border-top: 1px solid #fff;*/
     /*border-bottom: 1px solid #fff;*/
-    background: rgba(0,0,0,0.7);
+    background: transparent;
 }
 
 #footer-nav.navbar-fixed-bottom {
@@ -414,6 +431,10 @@ textarea.parsley-error {
 
 #footer-nav .alertNumber {
     color: #000;
+}
+
+#footer-nav .btn-group {
+background: rgba(0,0,0,0.7);
 }
 
 #footer-nav .btn {
@@ -437,6 +458,18 @@ textarea.parsley-error {
     box-shadow: none;
 }
 
+.alert {
+    margin-bottom: -5px;
+    border-radius: 0;
+    text-align: center:
+    font-weight: bold;
+}
+
+.close {
+    display: none;
+
+}
+
 /* Forms */
 .form-control {
     display: block;
@@ -453,7 +486,7 @@ textarea.parsley-error {
     box-shadow: none;
 }
 
-.status-container select {
+.status-container select, .statusSelect select {
     border: 1px solid #fff;
     border-radius: 0;
     margin: .5em 0;
@@ -464,8 +497,12 @@ label {
     /*font-style: italic;*/
 }
 
-input::-webkit-input-placeholder {
-    color: whitesmoke;
+input[type="text"]::-webkit-input-placeholder,
+input[type="email"]::-webkit-input-placeholder,
+input[type="date"]::-webkit-input-placeholder,
+input[type="password"]::-webkit-input-placeholder{
+    color: #faebd7;
+    opacity: 0.5;
 }
 
 /* login */
@@ -478,8 +515,28 @@ input::-webkit-input-placeholder {
     box-shadow: none;
 }
 
+#new-account, #forgot-password {
+    color: #fff;
+    padding: 10px 16px;
+    border: 1px solid;
+    width: 50%;
+    display: inline-block;
+}
 
+#new-account:active, #forgot-password:active {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
 
+#new-account {
+    float: left;
+    border-right: none;
+}
+
+#forgot-password {
+    float: right;
+}
 
 /* Collapse List */
 
@@ -502,6 +559,18 @@ p {
     background: transparent;
     outline: none;
     color: #fff;
+}
+
+.sessionItem {
+    margin-left: 10px;
+}
+
+.clientActionText,.due-date-client {
+    color: #fff;
+}
+
+.due-date-client {
+    margin-right: 25px;
 }
 
 .inlineDeleteActionBtn {
@@ -586,7 +655,7 @@ p {
     margin-right: 15px;
 }
 
-.navbar-back .goback:focus {
+.navbar-back .goback:focus,.navbar-back .goback:active {
     color: #fff;
 }
 

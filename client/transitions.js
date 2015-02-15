@@ -5,7 +5,7 @@ Template.layoutMain.rendered = function(){
             $(node)
                 //.hide()
                 .insertBefore(next)
-                .addClass('animated fadeInUp');
+                .addClass('animated fadeInDown');
         },
         removeElement: function(node) {
             $(node).remove();

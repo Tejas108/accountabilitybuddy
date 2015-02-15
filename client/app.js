@@ -274,6 +274,10 @@ Template.editProfileForm.events({
         Meteor.call('updateUser', id, userData);
         FlashMessages.sendSuccess(msg.profileUpdated);
         Bender.go('viewProfile');
+    },
+    'click .cancel': function(e) {
+        e.preventDefault();
+        Router.go('viewProfile');
     }
 });
 
@@ -822,3 +826,4 @@ function sendCoachEmail(action) {
 
     Meteor.call('sendCoachEmail', Meteor.userId(), coachEmail, from, subject, text, userName, coachName, tmpl, title, status, statusReason);
 }
+
