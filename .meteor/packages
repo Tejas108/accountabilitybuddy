@@ -19,3 +19,4 @@ percolate:synced-cron
 email
 cmather:handlebars-server
 linto:fontawesome
+meteorhacks:fast-render

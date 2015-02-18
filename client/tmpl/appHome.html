@@ -6,8 +6,10 @@
             <header>
                 <h1>Your Alerts</h1>
             </header>
-        {{#if client}}
-        <p>Tap title to expand</p>
+        {{#if hasAlerts}}
+        <p class="info">Tap title to expand</p>
+            {{else}}
+            <p>You have no client alerts</p>
             {{/if}}
             {{#each client}}
                 <ul class="list-group client" style="list-style-type: none;">
@@ -38,4 +40,8 @@
         {{/each}}
     </ul>
     <br>
+</template>
+
+<template name="splashHome">
+    Hi, this is the splash page!
 </template>

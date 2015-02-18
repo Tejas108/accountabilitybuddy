@@ -5,7 +5,7 @@ Meteor.startup(function() {
     SyncedCron.add({
         name: 'Notify users about past-due actions',
         schedule: function (parser) {
-            // check every two minutes
+            // check every day
             return parser.text('every day');
         },
         job: function () {

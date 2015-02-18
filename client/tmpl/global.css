@@ -56,6 +56,11 @@ p {
     color: #fff;
 }
 
+.info {
+    font-size: .8em;
+    color: #fff;
+}
+
 /* Layout */
 
 section {
@@ -125,6 +130,8 @@ section header {
 
 .clientActionText {
     padding-left: 30px;
+    width: 80%;
+    display: inline-block;
 }
 
 .actionDescriptionStatus {
@@ -156,16 +163,28 @@ section header {
     font-size: .8em;
 }
 
+
+
 /*inactiveclient*/
 .inactive {
     background: #d4d4d4;
     opacity: .5;
 }
+.due-date-client.past-due {
+    background: #d9534f;
+}
 
+.past-due::before {
+    font-family: "FontAwesome";
+    font-size: 1.2em;
+    content: "\f06a";
+    padding-right: 5px;
+}
 .due-date-client {
     font-weight: bold;
     float: right;
     margin-right: 15px;
+    padding: 0 10px;
 }
 
 /* Buttons */
@@ -442,6 +461,7 @@ background: rgba(0,0,0,0.7);
     line-height: 27px;
     color: #fff;
     border-radius:0;
+    background: rgba(0,0,0,0.4);
 }
 
 #footer-nav .footer-middle {
@@ -575,6 +595,9 @@ p {
 
 .inlineDeleteActionBtn {
     /*margin-left: -4px;*/
+    float: right;
+    margin-right: 20px;
+    margin-top: 11px;
 }
 
 .panel-title.col-xs-9 {
@@ -637,6 +660,7 @@ p {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     padding-left: 7px;
     padding-right: 0;
+    margin-bottom: .5em;
 }
 
 .actionRow:last-child {
@@ -644,7 +668,7 @@ p {
 }
 
 .actionText {
-    /*padding-left: 15px;*/
+    padding-left: 35px;
     display: block;
     color: #fff;
 }

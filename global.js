@@ -28,8 +28,16 @@ if(Meteor.isClient) {
     //    $('#editActionForm').parsley({trigger: 'change'});
     //};
 
+
+
     UI.registerHelper('equals', function (a, b) {
         return a === b;
+    });
+
+    UI.registerHelper('pastDue',function(a){
+       if(moment(a).format('YYYY/D/M') < moment().format('YYYY/D/M')){
+           return 'past-due'
+       }
     });
 
     UI.registerHelper('date', function (a){
@@ -72,7 +80,7 @@ SinglePageLogin.config({
     routeAfterSignUp: '/editProfile',
     routeAfterLogout: '/',
     forceLogin: true,
-    exceptRoutes: ['signup', 'app']
+    exceptRoutes: ['home', 'appHome']
 });
 
 getCoach = function(id){

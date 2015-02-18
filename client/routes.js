@@ -5,6 +5,8 @@ Router.configure({
 Router.route('/', function () {
         if (Meteor.userId()) {
             this.render('appHome');
+        }else {
+            this.render('singlePageLogin');
         }
     }, {
         name: 'home'
@@ -21,7 +23,8 @@ Router.route('/about', function () {
 Router.route('/app', function () {
         this.render('appHome');
     }, {
-        name: 'appHome'
+        name: 'appHome',
+        fastRender: true
     }
 );
 

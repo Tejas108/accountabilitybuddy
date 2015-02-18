@@ -17,6 +17,8 @@ Session.setDefault('isClient', false);
 Session.setDefault('status', 'active');
 Session.setDefault('actionStatus', null);
 Session.setDefault('reasonStatus', null);
+Session.setDefault('hasAlerts', null);
+
 
 
 var msg = {
@@ -514,6 +516,7 @@ Template.editActionForm.events({
             reason = "";
             status = "";
             statusVal = "";
+            Session.set('hasAlerts', false);
             var profileData = {
                 'profile.hasAlert': false
             };
@@ -579,10 +582,7 @@ Template.clientSessionsList.helpers({
     actionItem: function () {
         var sessionID = Session.get('activeSession');
         var actions = Actions.find({sessionID: sessionID}, {sort: {dateCreated: -1}});
-        return actions
-    },
-    overdueNotice: function () {
-        var today = new Date();
+        return actions;
     }
 });
 
@@ -611,7 +611,7 @@ Template.statusList.events({
             $(e.currentTarget).hide();
             //$(e.currentTarget).next().html("Action Item Status: <strong>" + statusText + "</strong>");
             //$('.itemStatus').show();
-
+            Session.set('hasAlerts', true);
             var id = $(e.currentTarget).attr('data');
             var date = moment().format('YYYY-M-D');
             var statusData = {
@@ -704,11 +704,14 @@ Template.appHome.helpers({
     },
     alertCount: function () {
         return Actions.find({client: Session.get('clientHasAlert'), alert: true}).count();
+    },
+    hasAlerts:function(){
+        return Session.get('hasAlerts');
     }
 });
 
 Template.appHome.events({
-    'click .client .client-alert-title': function (e, t) {
+    'click .client .client-alert-title': function (e) {
         e.preventDefault();
         var id = $(e.currentTarget).attr('data');
         $('ul.actionList').hide();
