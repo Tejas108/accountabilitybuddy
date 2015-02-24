@@ -9,11 +9,11 @@
             <div class="row edit-create-btns">
                 <div class="btn-group btn-group-justified btn-large" role="group" data-toggle="buttons">
                     <div class="btn-group">
-                        <a class="btn btn-primary btn-block editClient" data="{{clientEditBtn}}" role="button">Edit
+                        <a class="btn btn-warning btn-block editClient" data="{{clientEditBtn}}" role="button">Edit
                             Client</a>
                     </div>
                     <div class="btn-group">
-                        <a class="btn btn-primary btn-block createSession" href="{{pathFor 'createSession'}}">Create a
+                        <a class="btn btn-success btn-block createSession" href="{{pathFor 'createSession'}}">Create a
                             New Session</a>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                                                 </li>
                                             {{/if}}
                                         {{else}}
-                                            <li>There are currently no Action Items for this session</li>
+                                            <li style="color: #fff; padding: 0 0 0.5em 20px;font-size: 0.8em;">There are no Action Items for this Session</li>
                                         {{/each}}
                                     </ul>
                                 </div>
@@ -81,7 +81,9 @@
                     </div>
                 {{/if}}
             {{else}}
-                <div class="row">There are currently no session assigned</div>
+
+                    <p style="font-size: 1em;">There are no assigned Sessions for this client</p>
+
             {{/if}}
 
 

@@ -102,6 +102,10 @@ section header {
     display: none;
 }
 
+.sessionEdit {
+    margin-right: 0;
+}
+
 .clientRow {
     cursor: pointer;
     height: 60px;
@@ -198,6 +202,10 @@ section header {
     color: #fff;
 }
 
+.btn:active,.btn:focus {
+    box-shadow: none;
+}
+
 .btn-primary {
     color: #fff;
     border-color: #fff;
@@ -272,6 +280,18 @@ section header {
     box-shadow: none;
 }
 
+.modal-footer .btn-primary {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+.modal-footer .btn-default {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+
 .glyphicon-pencil {
     color: #eea236;
 }
@@ -284,17 +304,23 @@ section header {
 input.parsley-success,
 select.parsley-success,
 textarea.parsley-success {
-    color: #468847;
+    /* color: #468847;
     background-color: #DFF0D8;
-    border: 1px solid #D6E9C6;
+    border: 1px solid #D6E9C6; */
+    color: #fff;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
 }
 
 input.parsley-error,
 select.parsley-error,
 textarea.parsley-error {
     color: #B94A48;
-    background-color: #F2DEDE;
-    border: 1px solid #EED3D7;
+    /*background-color: #F2DEDE;*/
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #d9534f;
 }
 
 .parsley-errors-list {
@@ -302,6 +328,8 @@ textarea.parsley-error {
     padding: 0;
     list-style-type: none;
     font-size: 0.9em;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
     line-height: 0.9em;
     opacity: 0;
     -moz-opacity: 0;
@@ -358,6 +386,12 @@ textarea.parsley-error {
     .navbar-nav>li>a {
         padding-top: 10px;
         padding-bottom: 10px;
+        font-size: 2em;
+        line-height: 2em;
+        font-family: 'Raleway';
+        font-weight: bold;
+        color: #fff;
+        letter-spacing: 3px;
     }
     .collapse.in{
         display:block !important;
@@ -409,7 +443,7 @@ textarea.parsley-error {
 
 
 #header-nav {
-    background: rgba(0,0,0, 0.8);
+    background: #1F1F1F;
 }
 
 .header-alert {
@@ -538,9 +572,9 @@ input[type="password"]::-webkit-input-placeholder{
 #new-account, #forgot-password {
     color: #fff;
     padding: 10px 16px;
-    border: 1px solid;
     width: 50%;
     display: inline-block;
+    font-size: 0.9em;
 }
 
 #new-account:active, #forgot-password:active {
@@ -712,8 +746,24 @@ p {
     font-size: 1em;
 }
 
-.profile-container .white-box {
-    padding: 10px;
+.white-box {
+    padding: 30px;
     background: rgba(255,255,255, 0.2);
     margin-bottom: 2em;
+    line-height: 2em;
+}
+
+/* Misc */
+
+.no-alerts, .no-inactive {
+    color: #fff;
+    margin: 40% auto 0 auto;
+    font-family: 'Raleway';
+    font-size: 2em;
+    text-align: center;
+}
+
+.no-alerts i,.no-inactive i {
+    font-size: 2em;
+    margin-bottom: 1em;
 }

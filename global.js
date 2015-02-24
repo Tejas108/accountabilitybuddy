@@ -6,11 +6,6 @@ if(Meteor.isClient) {
             return Session.get('appName');
         }
     });
-    //if(Meteor.user().profile.isClient){
-    //    console.log("is client");
-    //}else{
-    //    console.log("is coach");
-    //}
 
     Template.addClientForm.rendered = function (){
         $('#addUserForm').parsley({trigger: 'change'});
@@ -20,13 +15,14 @@ if(Meteor.isClient) {
         $('#editUserForm').parsley({trigger: 'change'});
     };
 
-    //Template.createActionForm.rendered = function (){
-    //    $('#newActionForm').parsley({trigger: 'change'});
-    //};
+    Template.createSessionForm.rendered = function (){
+        $('#newSessionForm').parsley({trigger: 'change'});
+        console.log('new session change');
+    };
 
-    //Template.editActionForm.rendered = function (){
-    //    $('#editActionForm').parsley({trigger: 'change'});
-    //};
+    Template.editSessionForm.rendered = function (){
+        $('#editSessionForm').parsley({trigger: 'change'});
+    };
 
 
 

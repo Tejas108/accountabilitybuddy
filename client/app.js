@@ -9,8 +9,8 @@ Session.setDefault('activeAction', null);
 Session.setDefault('activeActionTitle', null);
 Session.setDefault('clientName', null);
 Session.setDefault('incSession', 0);
-Session.setDefault('sessionDeleteBtn', 'Delete Session');
-Session.setDefault('sessionEditBtn', 'Select Session to Edit');
+Session.setDefault('sessionDeleteBtn', 'Delete Sessions');
+Session.setDefault('sessionEditBtn', 'Edit Sessions');
 Session.setDefault('isSessionDeleteBtn', 'off');
 Session.setDefault('isSessionEditBtn', 'off');
 Session.setDefault('isClient', false);
@@ -18,7 +18,6 @@ Session.setDefault('status', 'active');
 Session.setDefault('actionStatus', null);
 Session.setDefault('reasonStatus', null);
 Session.setDefault('hasAlerts', null);
-
 
 
 var msg = {
@@ -38,7 +37,7 @@ var msg = {
     statusReset: "Status Reset!",
     clientCreated: "Client Created!",
     clientUpdated: "Client Updated!",
-    clientDeleted: "Client Deleted",
+    clientDeleted: "Client Deleted!",
     profileUpdated: "Your Profile is Updated!"
 };
 
@@ -79,18 +78,6 @@ Template.addClientForm.events({
     }
 });
 
-
-//Template.siteNav.helpers({
-//    isClient:function(){
-//        if(Meteor.user().profile.isClient){
-//            return Meteor.user().profile.isClient;
-//        }else{
-//            return false;
-//        }
-//
-//    }
-//});
-
 // Header Stuff
 Template.siteNav.helpers({
     alertCount: function () {
@@ -110,24 +97,27 @@ Template.siteNav.events({
     }
 });
 
-Template.siteNav.rendered = function(){
-    $(".navbar-nav li a").click(function (event) {
-        // check if window is small enough so dropdown is created
+Template.siteNav.rendered = function (e) {
+    $(".navbar-nav li a").click(function (e) {
+        //e.preventDefault();
         var toggle = $(".navbar-toggle").is(":visible");
         if (toggle) {
             $(".navbar-collapse").collapse('hide');
         }
     });
+    $(document).on('click',function(){
+        $('.navbar-collapse').collapse('hide');
+    })
 }
 
 
 Template.footer.helpers({
     activeCount: function () {
-    return Meteor.users.find({'profile.isActive': true, 'profile.addedBy': Meteor.userId()}).count();
-},
-inactiveCount: function () {
-    return Meteor.users.find({'profile.isActive': false, 'profile.addedBy': Meteor.userId()}).count();
-}
+        return Meteor.users.find({'profile.isActive': true, 'profile.addedBy': Meteor.userId()}).count();
+    },
+    inactiveCount: function () {
+        return Meteor.users.find({'profile.isActive': false, 'profile.addedBy': Meteor.userId()}).count();
+    }
 })
 
 // Retrieve Clients
@@ -277,36 +267,23 @@ Template.editProfileForm.events({
         FlashMessages.sendSuccess(msg.profileUpdated);
         Bender.go('viewProfile');
     },
-    'click .cancel': function(e) {
+    'click .cancel': function (e) {
         e.preventDefault();
         Router.go('viewProfile');
     }
 });
 
-// Check if client or not
-//Template.appHome.helpers({
-//    isClient:function() {
-//        if (Meteor.user()) {
-//            if (Meteor.user().profile.isClient) {
-//                return Meteor.user().profile.isClient
-//            }else{
-//                return false;
-//            }
-//        }
-//
-//    }
-//});
-
 //Sessions
 Template.createSessionForm.events({
-    'click .addSession': function (e, t) {
+    'submit': function (e, t) {
         e.preventDefault();
+        var date = moment(t.find('#datepicker').value).format('YYYY-M-D');
         var sessionData = {
             title: t.find('.stitle').value,
             description: t.find('.sdescription').value,
             clientID: Session.get('activeClient'),
             coachID: Meteor.userId(),
-            dateCreated: moment().format('YYYY-M-D')
+            sessionDate: date
         };
         Meteor.call('insertSession', sessionData);
         Router.go('clientShow');
@@ -326,7 +303,7 @@ Template.editSessionForm.helpers({
 });
 
 Template.editSessionForm.events({
-    'click .editSession': function (e, t) {
+    'submit': function (e, t) {
         e.preventDefault();
         var sessionData = {
             title: t.find('.stitle').value,
@@ -335,7 +312,7 @@ Template.editSessionForm.events({
         Meteor.call('updateSessions', this._id, sessionData);
         Router.go('clientShow');
         FlashMessages.sendSuccess(msg.sessionUpdated);
-        Session.set('sessionEditBtn', 'Select Session to Edit');
+        Session.set('sessionEditBtn', 'Edit Sessions');
     },
     'click .cancelSession': function (e) {
         e.preventDefault();
@@ -368,7 +345,6 @@ Template.clientProfile.helpers({
     clientEditBtn: function () {
         return Session.get('activeClient');
     }
-
 });
 
 Template.clientProfile.events({
@@ -391,15 +367,14 @@ Template.clientProfile.events({
     'click .sessionDelete': function (e) {
         e.preventDefault();
         var id = $(e.currentTarget).attr("data");
-        console.log(id);
+        //console.log(id);
         bootbox.confirm(msg.confirmSessionDelete, function (result) {
             if (result === true) {
                 Meteor.call('deleteSingleSession', id);
                 //Sessions.remove({_id: id});
                 FlashMessages.sendSuccess(msg.sessionDeleted);
-                Session.set('sessionDeleteBtn', 'Delete Session')
+                Session.set('sessionDeleteBtn', 'Delete Sessions')
             }
-
         });
     },
     'click .showDeleteBtn': function () {
@@ -411,10 +386,10 @@ Template.clientProfile.events({
             $(this).toggle();
         });
 
-        if (Session.get('sessionDeleteBtn') == 'Delete Session') {
-            Session.set('sessionDeleteBtn', 'Cancel Delete Session');
-        } else if (Session.get('sessionDeleteBtn') == 'Cancel Delete Session') {
-            Session.set('sessionDeleteBtn', 'Delete Session');
+        if (Session.get('sessionDeleteBtn') == 'Delete Sessions') {
+            Session.set('sessionDeleteBtn', 'Cancel Delete Sessions');
+        } else if (Session.get('sessionDeleteBtn') == 'Cancel Delete Sessions') {
+            Session.set('sessionDeleteBtn', 'Delete Sessions');
         }
     },
     'click .createAction': function (e) {
@@ -444,10 +419,10 @@ Template.clientProfile.events({
         $('.sessionEdit').each(function () {
             $(this).toggle();
         });
-        if (Session.get('sessionEditBtn') == 'Select Session to Edit') {
+        if (Session.get('sessionEditBtn') == 'Edit Sessions') {
             Session.set('sessionEditBtn', 'Cancel Session Edit');
         } else if (Session.get('sessionEditBtn') == 'Cancel Session Edit') {
-            Session.set('sessionEditBtn', 'Select Session to Edit');
+            Session.set('sessionEditBtn', 'Edit Sessions');
         }
     },
     'click .editClient': function (e) {
@@ -487,15 +462,6 @@ Template.createActionForm.events({
         Router.go('clientShow');
     }
 });
-
-//Template.createActionForm.rendered = function(){
-//    $('#datepicker').datepicker({
-//        todayBtn: "linked",
-//        keyboardNavigation: false,
-//        autoclose: true,
-//        todayHighlight: true
-//    });
-//};
 
 Template.editActionForm.helpers({
     actionItem: function () {
@@ -694,6 +660,17 @@ Template.clientSessionsList.events({
         var activeAction = this._id;
         Session.set('activeAction', activeAction);
         $(e.currentTarget).parent().parent().parent().find('.actionDescriptionStatus').fadeToggle('fast'); //TODO: Find better way for this
+    },
+    'change #status': function (e) {
+        var newValue = $(e.currentTarget).val();
+        if (newValue === "complete") {
+            $(e.currentTarget).css('margin-bottom', '1em');
+            $(e.currentTarget).parent().find('.reason-container').hide();
+            $(e.currentTarget).parent().find('#statusReason').val("Completed!");
+        } else {
+            $(e.currentTarget).parent().find('.reason-container').show();
+            $(e.currentTarget).parent().find('#statusReason').val("");
+        }
     }
 });
 
@@ -705,7 +682,7 @@ Template.appHome.helpers({
     alertCount: function () {
         return Actions.find({client: Session.get('clientHasAlert'), alert: true}).count();
     },
-    hasAlerts:function(){
+    hasAlerts: function () {
         return Session.get('hasAlerts');
     }
 });

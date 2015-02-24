@@ -56,6 +56,7 @@ mongo@1.0.11
 mongo-livedata@1.0.7
 mrt:flash-messages@1.0.0
 mrt:moment@2.8.1
+msavin:mongol@0.3.5
 npm-bcrypt@0.7.7
 observe-sequence@1.0.4
 ordered-dict@1.0.2

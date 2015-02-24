@@ -11,7 +11,7 @@ Meteor.methods({
                         from: "noreply@accountabilitybuddy.biz",
                         to: user.profile.email,
                         subject: "Welcome to your Accountability Buddy",
-                        text: "Welcome !"
+                        text: "Welcome!"
                     });
                     Meteor.users.update({_id:user._id},{$set:{'profile.welcomeEmailSend':true}});
                 }else {

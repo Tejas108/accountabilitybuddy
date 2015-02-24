@@ -1,41 +1,52 @@
 <template name="editSessionForm">
-    <header>
-        {{> clientName}}
-        <h2>Edit Session</h2>
-    </header>
-    <section id="newSession">
-        <div class="container">
-            <div class="row">
-                <div class="errors"></div>
-                <div class="col-xs-12">
-                    <div class="form-wrap">
-                        {{#with sessionItem}}
-                        <form role="form" id="newSessionForm" autocomplete="off">
-                            <div class="form-group">
-                                <label for="name">Title</label>
-                                <input type="text" name="title" id="title" class="form-control stitle" value="{{title}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="description">Description</label>
-                                <textarea name="description" id="description" class="form-control sdescription" rows="3">{{description}}</textarea>
-                            </div>
-                            <div class="form-group">
-                                <p>Date Created: {{dateCreated}}</p>
-                            </div>
-                            <div class="btn-group btn-group-justified" role="group">
-                                <div class="btn-group">
-                                    <button type="submit" class="btn btn-block btn-success editSession">Save</button>
-                                </div>
-                                <div class="btn-group">
-                                    <button type="submit" class="btn btn-block btn-default cancelSession">Cancel</button>
-                                </div>
-                            </div>
+    <div>
+        <header>
+            {{> clientName}}
+            <h2>Edit Session</h2>
+        </header>
+        <section id="newSession">
+            <div class="container">
+                <div class="row">
+                    <div class="errors"></div>
+                    <div class="col-xs-12">
+                        <div class="form-wrap">
+                            {{#with sessionItem}}
+                                <form role="form" id="editSessionForm" autocomplete="off" data-parsley-validate>
+                                    <div class="form-group">
+                                        <label for="name">Title</label>
+                                        <input type="text" name="title" id="title" class="form-control stitle"
+                                               value="{{title}}" required data-parsley-minlength="3" data-parsley-focus="first">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <textarea name="description" id="description" class="form-control sdescription"
+                                                  rows="3" required data-parsley-minlength="3">{{description}}</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="datepicker">Session Date: </label>
+                                        <input type="text" class="form-control" id="datepicker" name="datepicker" value="{{date sessionDate}}" required data-parsley-minlength="3" role="date">
+                                    </div>
+                                    <div class="btn-group btn-group-justified" role="group">
+                                        <div class="btn-group">
+                                            <button type="submit" class="btn btn-block btn-success editSession">Save
+                                            </button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button type="submit" class="btn btn-block btn-default cancelSession">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </div>
 
-                        </form>
-                        {{/with}}
+                                </form>
+                            {{/with}}
+                        </div>
                     </div>
-                </div> <!-- /.col-xs-12 -->
-            </div> <!-- /.row -->
-        </div> <!-- /.container -->
-    </section>
+                    <!-- /.col-xs-12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </section>
+    </div>
 </template>
