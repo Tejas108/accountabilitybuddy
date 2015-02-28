@@ -17,14 +17,23 @@ if(Meteor.isClient) {
 
     Template.createSessionForm.rendered = function (){
         $('#newSessionForm').parsley({trigger: 'change'});
-        console.log('new session change');
     };
 
     Template.editSessionForm.rendered = function (){
         $('#editSessionForm').parsley({trigger: 'change'});
+        var date = moment($('#datepicker').attr('placeholder')).format('YYYY-MM-DD');
+        $('#datepicker').val(date);
     };
 
+    Template.createActionForm.rendered = function (){
+        $('#newActionForm').parsley({trigger: 'change'});
+    };
 
+    Template.editActionForm.rendered = function (){
+        $('#editActionForm').parsley({trigger: 'change'});
+        var date = moment($('#datepicker').attr('placeholder')).format('YYYY-MM-DD');
+        $('#datepicker').val(date);
+    };
 
     UI.registerHelper('equals', function (a, b) {
         return a === b;

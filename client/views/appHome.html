@@ -4,14 +4,14 @@
             {{> clientSessionsList}}
         {{else}}
             {{#if hasAlerts}}
-            <header>
-                <h1>Your Alerts</h1>
-            </header>
+                <header>
+                    <h1>Your Alerts</h1>
+                </header>
                 <p class="info">Tap title to expand</p>
             {{else}}
                 <div class="no-alerts">
-                <i class="fa fa-bell-slash-o"></i>
-                <p>You have no client alerts</p>
+                    <i class="fa fa-bell-slash-o"></i>
+                    <p>You have no client alerts</p>
                 </div>
             {{/if}}
             {{#each client}}

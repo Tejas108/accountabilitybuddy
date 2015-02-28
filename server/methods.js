@@ -7,11 +7,11 @@ Meteor.methods({
                 if(!user.profile.welcomeEmailSend){
                     var text = "Welcome to your Accountability Buddy, your account has been set up! Log in at the link below.";
                     Email.send({
-                        html: Handlebars.templates['newClient']({ name: user.username,text:text }),
+                        html: Handlebars.templates['newClient']({ name: user.profile.name, username: user.username, password: user.profile.password, text:text }),
                         from: "noreply@accountabilitybuddy.biz",
                         to: user.profile.email,
                         subject: "Welcome to your Accountability Buddy",
-                        text: "Welcome!"
+                        text: text
                     });
                     Meteor.users.update({_id:user._id},{$set:{'profile.welcomeEmailSend':true}});
                 }else {

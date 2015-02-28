@@ -41,7 +41,48 @@ var msg = {
     profileUpdated: "Your Profile is Updated!"
 };
 
-// Client Stuff
+// Header Stuff
+Template.siteNav.helpers({
+    alertCount: function () {
+        return Actions.find({alert: true}).count();
+    }
+});
+
+Template.siteNav.events({
+    'click .logout': function (e) {
+        e.preventDefault();
+        Meteor.logout();
+        Router.go('/login');
+    },
+    'click .goback': function (e) {
+        e.preventDefault();
+        history.go(-1);
+    }
+});
+
+Template.siteNav.rendered = function () {
+    $(".navbar-nav li a").click(function () {
+        //e.preventDefault();
+        var toggle = $(".navbar-toggle").is(":visible");
+        if (toggle) {
+            $(".navbar-collapse").collapse('hide');
+        }
+    });
+        $(document).on('click',function(){
+            $('.navbar-collapse.in').collapse('hide');
+        });
+}
+
+Template.footer.helpers({
+    activeCount: function () {
+        return Meteor.users.find({'profile.isActive': true, 'profile.addedBy': Meteor.userId()}).count();
+    },
+    inactiveCount: function () {
+        return Meteor.users.find({'profile.isActive': false, 'profile.addedBy': Meteor.userId()}).count();
+    }
+})
+
+// Add Client
 
 Template.addClientForm.events({
     'submit': function (e, t) {
@@ -77,48 +118,6 @@ Template.addClientForm.events({
         Router.go('clientList');
     }
 });
-
-// Header Stuff
-Template.siteNav.helpers({
-    alertCount: function () {
-        return Actions.find({alert: true}).count();
-    }
-});
-
-Template.siteNav.events({
-    'click .logout': function (e) {
-        e.preventDefault();
-        Meteor.logout();
-        Router.go('/login');
-    },
-    'click .goback': function (e) {
-        e.preventDefault();
-        history.go(-1);
-    }
-});
-
-Template.siteNav.rendered = function (e) {
-    $(".navbar-nav li a").click(function (e) {
-        //e.preventDefault();
-        var toggle = $(".navbar-toggle").is(":visible");
-        if (toggle) {
-            $(".navbar-collapse").collapse('hide');
-        }
-    });
-    $(document).on('click',function(){
-        $('.navbar-collapse').collapse('hide');
-    })
-}
-
-
-Template.footer.helpers({
-    activeCount: function () {
-        return Meteor.users.find({'profile.isActive': true, 'profile.addedBy': Meteor.userId()}).count();
-    },
-    inactiveCount: function () {
-        return Meteor.users.find({'profile.isActive': false, 'profile.addedBy': Meteor.userId()}).count();
-    }
-})
 
 // Retrieve Clients
 Template.clientName.helpers({
@@ -305,9 +304,11 @@ Template.editSessionForm.helpers({
 Template.editSessionForm.events({
     'submit': function (e, t) {
         e.preventDefault();
+        var date = moment(t.find('#datepicker').value).format('YYYY-M-D');
         var sessionData = {
             title: t.find('.stitle').value,
-            description: t.find('.sdescription').value
+            description: t.find('.sdescription').value,
+            sessionDate: date
         };
         Meteor.call('updateSessions', this._id, sessionData);
         Router.go('clientShow');
@@ -431,6 +432,10 @@ Template.clientProfile.events({
     }
 });
 
+Template.clientProfile.rendered = function(){
+    Session.set('sessionDeleteBtn', 'Delete Sessions');
+    Session.set('sessionEditBtn', 'Edit Sessions');
+}
 
 // Action Items
 Template.showAction.helpers({
@@ -440,9 +445,9 @@ Template.showAction.helpers({
 });
 
 Template.createActionForm.events({
-    'click .addAction': function (e, t) {
+    'submit': function (e, t) {
         e.preventDefault();
-        var date = moment(t.find('#datepicker').value).format('YYYY-M-D');
+        var date = moment(t.find('#datepicker').value).format('MMM-DD-YYYY');
 
         var actionData = {
             title: t.find('.atitle').value,
@@ -470,7 +475,7 @@ Template.editActionForm.helpers({
 });
 
 Template.editActionForm.events({
-    'click .editAction': function (e, t) {
+    'submit': function (e, t) {
         e.preventDefault();
         var resetStatus = $('#resetStatus option:selected').val();
         var alert = false;
@@ -527,15 +532,6 @@ Template.editActionForm.events({
 
 });
 
-//Template.editActionForm.rendered = function(){
-//    $('#datepicker').datepicker({
-//        todayBtn: "linked",
-//        keyboardNavigation: false,
-//        autoclose: true,
-//        todayHighlight: true
-//    });
-//};
-
 // Client's View page stuff
 
 Template.clientSessionsList.helpers({
@@ -555,6 +551,7 @@ Template.clientSessionsList.helpers({
 Template.statusList.helpers({
     statusItem: function () {
         return Status.find();
+        console.log('status list');
     }
 });
 
@@ -807,3 +804,9 @@ function sendCoachEmail(action) {
     Meteor.call('sendCoachEmail', Meteor.userId(), coachEmail, from, subject, text, userName, coachName, tmpl, title, status, statusReason);
 }
 
+
+//TODO: Status dropdown not displaying values locally
+//TODO: Limit characters for Session and Action titles
+//TODO: Send client username/password with welcome email
+//TODO: Add email coach in nav
+//TODO: If action marked as complete, show congratulations screen

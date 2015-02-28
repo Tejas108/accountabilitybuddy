@@ -3,7 +3,7 @@
  */
 
 Session.set("Mongol", {
-    'collections': ['Sessions', 'Actions'],
+    'collections': ['Sessions', 'Actions', 'Status'],
     'display': true,
     'opacity_normal': ".7",
     'opacity_expand': ".9",

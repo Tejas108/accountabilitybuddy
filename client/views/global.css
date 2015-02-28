@@ -38,9 +38,15 @@ h1, .login-title {
     letter-spacing: 3px;
 }
 
+h1.client-title {
+    font-size: 1.2em;
+    letter-spacing: 1px;
+}
+
 h2 {
     font-size: 1.625em;
     line-height: 1.15384615em;
+    letter-spacing: 2px;
 }
 
 h3 {
@@ -54,6 +60,7 @@ p {
 
 .client-title {
     color: #fff;
+    font-weight: bold;
 }
 
 .info {
@@ -125,6 +132,7 @@ section header {
     border-bottom: 1px solid #e4e4e4;
     padding: 10px 0;
     text-align: center;
+    background: rgba(0,0,0,0.4);
 }
 
 
@@ -206,7 +214,7 @@ section header {
     box-shadow: none;
 }
 
-.btn-primary {
+.btn-primary, .sessionItem.btn-primary:focus, .sessionItem.btn-primary:hover {
     color: #fff;
     border-color: #fff;
     background: transparent;
@@ -222,6 +230,8 @@ section header {
 .btn-success, .btn-default {
     background: transparent;
 }
+
+
 
 .btn-success:active,.btn-primary.createAction:active {
     background: #4cae4c;
@@ -278,6 +288,10 @@ section header {
     background: #eea236;
     color: #fff;
     box-shadow: none;
+}
+
+.showDeleteBtn,.showEditBtn {
+    font-size: 0.9em;
 }
 
 .modal-footer .btn-primary {
@@ -418,7 +432,7 @@ textarea.parsley-error {
     padding-top: 4px;
 }
 
-.navbar-back a:active,.navbar-back a:focus {
+a.navbar-back:active,a.navbar-back:focus {
     color: #fff;
 }
 #header-nav .alertNumber {
@@ -540,7 +554,7 @@ background: rgba(0,0,0,0.7);
     box-shadow: none;
 }
 
-.status-container select, .statusSelect select {
+.status-container select, .statusSelect select,select.isActive {
     border: 1px solid #fff;
     border-radius: 0;
     margin: .5em 0;
@@ -757,13 +771,18 @@ p {
 
 .no-alerts, .no-inactive {
     color: #fff;
-    margin: 40% auto 0 auto;
+    margin: 20% auto 0 auto;
     font-family: 'Raleway';
     font-size: 2em;
     text-align: center;
 }
 
-.no-alerts i,.no-inactive i {
+.no-sessions {
+    font-size: 1.5em;
+    list-height: 1.5em;
+}
+
+.no-alerts i,.no-inactive i, .no-sessions i {
     font-size: 2em;
     margin-bottom: 1em;
 }
