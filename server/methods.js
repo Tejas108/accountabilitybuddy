@@ -13,7 +13,7 @@ Meteor.methods({
                         subject: "Welcome to your Accountability Buddy",
                         text: text
                     });
-                    Meteor.users.update({_id:user._id},{$set:{'profile.welcomeEmailSend':true}});
+                    Meteor.users.update({_id:user._id},{$set:{'profile.welcomeEmailSend':true,'profile.password':""}});
                 }else {
                     return false
                 }

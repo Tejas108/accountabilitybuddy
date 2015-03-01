@@ -68,9 +68,9 @@ Template.siteNav.rendered = function () {
             $(".navbar-collapse").collapse('hide');
         }
     });
-        $(document).on('click',function(){
-            $('.navbar-collapse.in').collapse('hide');
-        });
+    $(document).on('click', function () {
+        $('.navbar-collapse.in').collapse('hide');
+    });
 }
 
 Template.footer.helpers({
@@ -97,6 +97,7 @@ Template.addClientForm.events({
             username: t.find('.username').value,
             password: clientPassword,
             profile: {
+                password: clientPassword,
                 name: clientName,
                 email: clientEmail,
                 phone: clientPhone,
@@ -432,7 +433,7 @@ Template.clientProfile.events({
     }
 });
 
-Template.clientProfile.rendered = function(){
+Template.clientProfile.rendered = function () {
     Session.set('sessionDeleteBtn', 'Delete Sessions');
     Session.set('sessionEditBtn', 'Edit Sessions');
 }
@@ -487,11 +488,16 @@ Template.editActionForm.events({
             reason = "";
             status = "";
             statusVal = "";
-            Session.set('hasAlerts', false);
-            var profileData = {
-                'profile.hasAlert': false
-            };
-            Meteor.call('removeClientAlert', Session.get('activeClient'), profileData);
+            //check if number of alerts is 0 then set hasAlert to false
+            var alertCount = Actions.find({alert: true, client: Session.get('activeClient')}).count();
+            if (alertCount === 1) {
+                //Session.set('hasAlerts', false);
+                var profileData = {
+                    'profile.hasAlert': false
+                };
+
+                Meteor.call('removeClientAlert', Session.get('activeClient'), profileData);
+            }
             FlashMessages.sendSuccess(msg.statusReset);
         } else if (resetStatus === "no") {
             alert = true;
@@ -556,7 +562,6 @@ Template.statusList.helpers({
 });
 
 Template.statusList.events({
-
     'click .save': function (e, t) {
         e.preventDefault();
         var thisRow = $(e.currentTarget).parent();
@@ -564,7 +569,6 @@ Template.statusList.events({
         //console.log($(e.currentTarget));
         var currentStatus = $(e.currentTarget).parent().find("#status option:selected").val();
         var currentStatusReason = $(e.currentTarget).parent().find('#statusReason').val();
-
         if (currentStatus === "" || currentStatusReason === "") {
             return false;
         } else {
@@ -584,15 +588,21 @@ Template.statusList.events({
                 alert: true,
                 'status_reason': t.find('#statusReason').value
             };
+
             Session.set('actionStatus', statusData.status);
             Session.set('reasonStatus', statusData.status_reason);
-            FlashMessages.sendSuccess(msg.statusUpdated);
+            if (statusVal !== "complete") {
+                FlashMessages.sendSuccess(msg.statusUpdated);
+            }
             sendCoachEmail('updateStatus');
             Meteor.call('updateActionStatus', id, statusData);
             var profileData = {
                 'profile.hasAlert': true
             };
             Meteor.call('updateClientAlerts', Meteor.userId(), profileData);
+            if (statusVal === "complete") {
+                Router.go('congrats');
+            }
         }
 
     }
@@ -605,7 +615,6 @@ Template.statusListInactive.helpers({
 });
 
 Template.statusListInactive.events({
-
     'click .save': function (e, t) {
         e.preventDefault();
         var thisRow = $(e.currentTarget).parent();
@@ -661,9 +670,9 @@ Template.clientSessionsList.events({
     'change #status': function (e) {
         var newValue = $(e.currentTarget).val();
         if (newValue === "complete") {
-            $(e.currentTarget).css('margin-bottom', '1em');
-            $(e.currentTarget).parent().find('.reason-container').hide();
-            $(e.currentTarget).parent().find('#statusReason').val("Completed!");
+            //$(e.currentTarget).css('margin-bottom', '1em');
+            //$(e.currentTarget).parent().find('.reason-container').hide();
+            $(e.currentTarget).parent().find('#statusReason').val("I'm Awesome!");
         } else {
             $(e.currentTarget).parent().find('.reason-container').show();
             $(e.currentTarget).parent().find('#statusReason').val("");
@@ -806,7 +815,5 @@ function sendCoachEmail(action) {
 
 
 //TODO: Status dropdown not displaying values locally
-//TODO: Limit characters for Session and Action titles
-//TODO: Send client username/password with welcome email
 //TODO: Add email coach in nav
 //TODO: If action marked as complete, show congratulations screen

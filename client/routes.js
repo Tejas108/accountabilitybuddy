@@ -118,3 +118,10 @@ Router.route('/editAction', function () {
         name: 'editAction'
     }
 );
+
+Router.route('/congrats', function () {
+        this.render('congrats');
+    }, {
+        name: 'congrats'
+    }
+);
