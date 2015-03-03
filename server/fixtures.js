@@ -67,3 +67,30 @@ if(Status.find().count() == 0){
         text: 'Completed'
     });
 }
+
+if(StatusInactive.find().count() == 0){
+    StatusInactive.insert({
+        optionValue: '',
+        text: 'Set A Status For This Action'
+    });
+    StatusInactive.insert({
+        optionValue: 'hold',
+        text: 'Put on Hold'
+    });
+    StatusInactive.insert({
+        optionValue: 'phone',
+        text: 'Call Me ASAP'
+    });
+    StatusInactive.insert({
+        optionValue: 'schedule',
+        text: 'Schedule an Appointment'
+    });
+    StatusInactive.insert({
+        optionValue: 'time',
+        text: 'I Need More Time'
+    });
+    StatusInactive.insert({
+        optionValue: 'complete',
+        text: 'Completed'
+    });
+}

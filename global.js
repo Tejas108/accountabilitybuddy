@@ -31,6 +31,10 @@ if(Meteor.isClient) {
 
     Template.editActionForm.rendered = function (){
         $('#editActionForm').parsley({trigger: 'change'});
+    };
+
+    Template.statusList.rendered = function (){
+        $('#statusForm').parsley({trigger: 'change'});
         var date = moment($('#datepicker').attr('placeholder')).format('YYYY-MM-DD');
         $('#datepicker').val(date);
     };
@@ -40,7 +44,7 @@ if(Meteor.isClient) {
     });
 
     UI.registerHelper('pastDue',function(a){
-       if(moment(a).format('YYYY/D/M') < moment().format('YYYY/D/M')){
+       if(moment(a).format('M/D/YYYY') < moment(new Date).format('M/D/YYYY')){
            return 'past-due'
        }
     });
@@ -52,7 +56,7 @@ if(Meteor.isClient) {
     FlashMessages.configure({
         autoHide: true,
         hideDelay: 2000,
-        autoScroll: true
+        autoScroll: false
     });
 
     Meteor.startup(function(){

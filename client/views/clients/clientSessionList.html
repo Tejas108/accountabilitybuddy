@@ -1,5 +1,6 @@
 <template name="clientSessionsList">
     {{#if currentUser}}
+        {{#if equals currentUser.profile.isActive true}}
         <div>
             <header>
                 <h1>Your Sessions</h1>
@@ -30,7 +31,7 @@
                                                     <div class="row">
                                                         <div>
                                                             <span class="clientActionText"><strong>{{title}}</strong></span><span
-                                                                class="due-date-client {{pastDue dueDate}}">Due: {{date dueDate}}</span>
+                                                                class="due-date-client {{pastDue dueDate}}">{{date dueDate}}</span>
                                                         </div>
                                                     </div>
                                                     <div class="row actionDescriptionStatus">
@@ -64,6 +65,19 @@
                 <p>You have no sessions assigned</p>
             {{/if}}
         </div>
+        {{else}}
+            {{> inactiveClient}}
+        {{/if}}
     {{/if}}
 </template>
 
+<template name="inactiveClient">
+    <div>
+        <header>
+            <h1>Your account has been deactivated</h1>
+            <p style="font-size: 1em;">Contact your coach for more information</p>
+        </header>
+
+    </div>
+
+</template>

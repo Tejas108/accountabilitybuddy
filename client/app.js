@@ -17,7 +17,7 @@ Session.setDefault('isClient', false);
 Session.setDefault('status', 'active');
 Session.setDefault('actionStatus', null);
 Session.setDefault('reasonStatus', null);
-Session.setDefault('hasAlerts', null);
+Session.setDefault('hasAlerts', false);
 
 
 var msg = {
@@ -190,6 +190,7 @@ Template.editClientForm.events({
             } else {
                 Session.set('statusChange', false);
             }
+            Meteor.call('deleteSessions',id);
         }
 
         var clientData = {
@@ -490,8 +491,9 @@ Template.editActionForm.events({
             statusVal = "";
             //check if number of alerts is 0 then set hasAlert to false
             var alertCount = Actions.find({alert: true, client: Session.get('activeClient')}).count();
+
             if (alertCount === 1) {
-                //Session.set('hasAlerts', false);
+
                 var profileData = {
                     'profile.hasAlert': false
                 };
@@ -689,9 +691,17 @@ Template.appHome.helpers({
         return Actions.find({client: Session.get('clientHasAlert'), alert: true}).count();
     },
     hasAlerts: function () {
-        return Session.get('hasAlerts');
+        var count = Actions.find({alert: true}).count();
+        if (count > 0) {
+            Session.set('hasAlerts', true);
+        } else {
+            Session.set('hasAlerts', false);
+            Router.go('clientList');
+        }
+        return Session.get('hasAlerts')
     }
 });
+
 
 Template.appHome.events({
     'click .client .client-alert-title': function (e) {
@@ -814,6 +824,6 @@ function sendCoachEmail(action) {
 }
 
 
-//TODO: Status dropdown not displaying values locally
 //TODO: Add email coach in nav
-//TODO: If action marked as complete, show congratulations screen
+//TODO: Finish Congrats screen
+//TODO: Style select options

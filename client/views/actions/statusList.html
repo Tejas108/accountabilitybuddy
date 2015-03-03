@@ -1,14 +1,17 @@
 <template name="statusList">
 {{#if currentUser}}
-    <select name="status" id="status" class="form-control">
-        {{#each statusItem}}
-            <option value="{{optionValue}}">{{text}}</option>
-        {{/each}}
-    </select>
-    <div class="form-group reason-container">
-        <label for="statusReason">Reason</label>
-        <input type="text" value="" name="statusReason" id="statusReason" class="form-control" />
-    </div>
+    <form role="form" id="statusForm" autocomplete="off" data-parsley-validate>
+        <select name="status" id="status" class="form-control">
+            {{#each statusItem}}
+                <option value="{{optionValue}}">{{text}}</option>
+            {{/each}}
+        </select>
+        <div class="form-group reason-container">
+            <label for="statusReason">Reason</label>
+            <input type="text" value="" name="statusReason" id="statusReason" class="form-control" required data-parsley-minlength="3">
+        </div>
+    </form>
+
     <a href="#" class="btn btn-success btn-block save" data="{{this._id}}">Save</a>
     <p class="itemStatus"><span class="statusText"></span></p>
     {{/if}}

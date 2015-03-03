@@ -9,7 +9,7 @@ Meteor.startup(function() {
             return parser.text('every day');
         },
         job: function () {
-            var date = moment(new Date).format('YYYY-M-D');
+            var date = moment(new Date).format('MMM-DD-YYYY');
             //if(Actions.find({dueDate: {$lt: date}}).count()){
             //    emailUsersAboutPastDueTasks()
             //}
