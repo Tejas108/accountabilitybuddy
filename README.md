@@ -14,11 +14,11 @@ Log their sessions
 Input their tasks 
 Let Accountability Buddy do the rest
 
-- - - What your clients get - - -
+What your clients get - - -
 Clients receive an alert to download the application from iTunes if they don't already have it
 Their account information is already set up since they received their username and password with the welcome email.
 They see their sessions and task assignments and are notified by email when a task becomes overdue
 
-- - - How Accountability Buddy Helps - - -
+How Accountability Buddy Helps - - -
 With each assignment, they receeive a list of options to let you know how they are progressing
 They choose a reply to let you know where they are now on their assinged tasks and helps move you to the next step with them.
