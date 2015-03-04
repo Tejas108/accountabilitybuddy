@@ -347,6 +347,10 @@ Template.clientProfile.helpers({
     },
     clientEditBtn: function () {
         return Session.get('activeClient');
+    },
+    active: function(){
+        var user = Meteor.users.findOne({_id:Session.get('activeClient')});
+        return user.profile.isActive
     }
 });
 
@@ -825,5 +829,3 @@ function sendCoachEmail(action) {
 
 
 //TODO: Add email coach in nav
-//TODO: Finish Congrats screen
-//TODO: Style select options

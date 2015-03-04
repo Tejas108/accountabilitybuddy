@@ -6,7 +6,7 @@ Meteor.startup(function() {
         name: 'Notify users about past-due actions',
         schedule: function (parser) {
             // check every day
-            return parser.text('every day');
+            return parser.text('at 12:00 am');
         },
         job: function () {
             var date = moment(new Date).format('MMM-DD-YYYY');

@@ -12,10 +12,14 @@
                         <a class="btn btn-warning btn-block editClient" data="{{clientEditBtn}}" role="button">Edit
                             Client</a>
                     </div>
-                    <div class="btn-group">
-                        <a class="btn btn-success btn-block createSession" href="{{pathFor 'createSession'}}">Create a
-                            New Session</a>
-                    </div>
+                    {{#if active}}
+                        <div class="btn-group">
+                            <a class="btn btn-success btn-block createSession" href="{{pathFor 'createSession'}}">Create
+                                a
+                                New Session</a>
+                        </div>
+                    {{else}}
+                    {{/if}}
                 </div>
             </div>
             {{#if sessions}}
@@ -28,7 +32,8 @@
                                 <div class="row">
                                     <button class="btn btn-danger sessionDelete" data="{{this._id}}"><i
                                             class="fa fa-times"></i></button>
-                                    <button class="btn btn-warning sessionEdit" data="{{this._id}}"><span class="glyphicon glyphicon-pencil"></span></button>
+                                    <button class="btn btn-warning sessionEdit" data="{{this._id}}"><span
+                                            class="glyphicon glyphicon-pencil"></span></button>
                                     <h4 class="panel-title col-xs-9">
                                         <a class="collapsed sessionItem btn btn-primary btn-large"
                                            data-toggle="collapse" role="button" data-parent="#accordion"
@@ -62,7 +67,9 @@
                                                 </li>
                                             {{/if}}
                                         {{else}}
-                                            <li style="color: #fff; padding: 0 0 0.5em 20px;font-size: 0.8em;">There are no Action Items for this Session</li>
+                                            <li style="color: #fff; padding: 0 0 0.5em 20px;font-size: 0.8em;">There are
+                                                no Action Items for this Session
+                                            </li>
                                         {{/each}}
                                     </ul>
                                 </div>
@@ -83,6 +90,7 @@
             {{else}}
                 <div class="no-sessions">
                     <i class="fa fa-cubes"></i>
+
                     <p>There are no Sessions for this client</p>
                 </div>
             {{/if}}

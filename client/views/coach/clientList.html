@@ -4,14 +4,15 @@
             <header>
                 <h1>Active Clients</h1>
             </header>
-
-            {{#if client }}
-                {{#each client}}
-                    {{>clientRow}}
-                {{/each}}
+            {{#each client}}
+                {{>clientRow}}
             {{else}}
-                <p>You have no active clients</p>
-            {{/if}}
+                <div class="no-inactive">
+                    <i class="fa fa-users"></i>
+
+                    <p>You have no active clients</p>
+                </div>
+            {{/each}}
         </div>
     {{/if}}
 </template>
@@ -19,19 +20,18 @@
 <template name="clientListInactive">
     {{#if currentUser}}
         <div>
-            {{#if client }}
-                <header>
-                    <h1>Inactive Clients</h1>
-                </header>
-                {{#each client}}
-                    {{>clientRow}}
-                {{/each}}
+            <header>
+                <h1>Inactive Clients</h1>
+            </header>
+            {{#each client}}
+                {{>clientRow}}
             {{else}}
                 <div class="no-inactive">
-                    <i class="fa fa-bell-slash-o"></i>
+                    <i class="fa fa-users"></i>
+
                     <p>You have no inactive clients</p>
                 </div>
-            {{/if}}
+            {{/each}}
         </div>
     {{/if}}
 </template>
