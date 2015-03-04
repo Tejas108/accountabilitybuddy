@@ -457,9 +457,10 @@ textarea.parsley-error {
     padding-top: 4px;
 }
 
-a.navbar-back:active,a.navbar-back:focus {
+a.navbar-back:active i,a.navbar-back:focus i {
     color: #fff;
 }
+
 #header-nav .alertNumber {
     background: #d43f3a;
     border-radius: 0.8em;
@@ -619,9 +620,9 @@ input[type="password"]::-webkit-input-placeholder{
 #new-account, #forgot-password {
     color: #fff;
     padding: 10px 16px;
-    width: 50%;
+    /*width: 50%;*/
     display: inline-block;
-    font-size: 0.9em;
+    font-size: 0.95em;
 }
 
 #new-account:active, #forgot-password:active {
@@ -831,4 +832,51 @@ canvas {
     top: 20%;
     left: 50%;
     margin-left: -133px;
+}
+
+@media (min-width: 768px) {
+    .col-sm-6 {
+        width: 100%;
+    }
+    .client-alert-title {
+        font-size: 2em;
+    }
+    .btn-large {
+        height: 60px;
+        font-size: 1.5em;
+    }
+    .btn-title {
+        font-size: 2em !important;
+    }
+    h1 {
+        font-size: 3em;
+    }
+    h1.client-title {
+        font-size: 3em;
+    }
+    h2 {
+        font-size: 2.2em;
+    }
+    label, input[type="text"], textarea.form-control, input[type="email"], input[type="date"] {
+        font-size: 2em;
+    }
+    .form-control {
+        height: 65px;
+    }
+    #footer-nav .btn {
+        height: 60px;
+        line-height: 44px;
+        color: #fff;
+        border-radius: 0;
+        background: #1f1f1f;
+        letter-spacing: 1px;
+        margin: 0;
+        font-size: 1.2em;
+    }
+    .navbar-toggle .icon-bar {
+        display: block;
+        width: 40px;
+        height: 6px;
+        border-radius: 1px;
+    }
 }

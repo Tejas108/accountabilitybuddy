@@ -9,12 +9,12 @@
             <div class="row edit-create-btns">
                 <div class="btn-group btn-group-justified btn-large" role="group" data-toggle="buttons">
                     <div class="btn-group">
-                        <a class="btn btn-warning btn-block editClient" data="{{clientEditBtn}}" role="button">Edit
+                        <a class="btn btn-warning btn-block btn-large editClient" data="{{clientEditBtn}}" role="button">Edit
                             Client</a>
                     </div>
                     {{#if active}}
                         <div class="btn-group">
-                            <a class="btn btn-success btn-block createSession" href="{{pathFor 'createSession'}}">Create
+                            <a class="btn btn-success btn-block btn-large createSession" href="{{pathFor 'createSession'}}">Create
                                 a
                                 New Session</a>
                         </div>
@@ -80,10 +80,10 @@
                 {{#if sessions}}
                     <div class="btn-group btn-group-justified btn-large" role="group" data-toggle="buttons">
                         <div class="btn-group">
-                            <button class="btn btn-warning showDeleteBtn">{{sessionDeleteBtn}}</button>
+                            <button class="btn btn-warning btn-large showDeleteBtn">{{sessionDeleteBtn}}</button>
                         </div>
                         <div class="btn-group">
-                            <button class="btn btn-warning showEditBtn">{{sessionEditBtn}}</button>
+                            <button class="btn btn-warning btn-large showEditBtn">{{sessionEditBtn}}</button>
                         </div>
                     </div>
                 {{/if}}

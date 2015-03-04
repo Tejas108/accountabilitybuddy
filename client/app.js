@@ -382,7 +382,7 @@ Template.clientProfile.events({
                 Meteor.call('deleteSingleSession', id);
                 //Sessions.remove({_id: id});
                 FlashMessages.sendSuccess(msg.sessionDeleted);
-                Session.set('sessionDeleteBtn', 'Delete Sessions')
+                Session.set('sessionDeleteBtn', 'Cancel Delete Sessions');
             }
         });
     },
