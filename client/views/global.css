@@ -399,7 +399,7 @@ textarea.parsley-error {
         float: none !important;
     }
     .navbar-toggle {
-        display: block;
+        display: inline-block;
     }
     .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
         background: transparent;
@@ -444,7 +444,18 @@ textarea.parsley-error {
     color: #9d9d9d;
 }
 
-
+.navbar-toggle {
+    position: relative;
+    float: right;
+    padding: 9px 10px;
+    margin-top: -30px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
 
 .navbar-back {
     float: left;
@@ -488,6 +499,7 @@ a.navbar-back:active i,a.navbar-back:focus i {
 .header-alert {
     margin-top: 5px;
     color: #fff;
+    margin-left: -67px;
 }
 
 .header-alert:active,.header-alert:focus {
@@ -834,7 +846,7 @@ canvas {
     margin-left: -133px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
     .col-sm-6 {
         width: 100%;
     }
@@ -878,5 +890,22 @@ canvas {
         width: 40px;
         height: 6px;
         border-radius: 1px;
+    }
+    #new-account, #forgot-password {
+        font-size: 1.4em;
+    }
+
+    #new-account {
+        margin-left: 20%;
+    }
+
+    #forgot-password {
+        margin-right: 20%;
+    }
+}
+
+@media (min-width: 992px) {
+    .col-md-offset-4 {
+        margin-left: 0;
     }
 }
