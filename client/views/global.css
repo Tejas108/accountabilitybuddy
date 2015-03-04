@@ -857,7 +857,7 @@ canvas {
     h2 {
         font-size: 2.2em;
     }
-    label, input[type="text"], textarea.form-control, input[type="email"], input[type="date"] {
+    label, input[type="text"],input[type="tel"], textarea.form-control, select, input[type="email"], input[type="date"] {
         font-size: 2em;
     }
     .form-control {
