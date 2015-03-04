@@ -29,6 +29,10 @@ if(Meteor.isClient) {
         $('#newActionForm').parsley({trigger: 'change'});
     };
 
+    Template.editProfileForm.rendered = function (){
+        $('#editUserForm').parsley({trigger: 'change'});
+    };
+
     Template.editActionForm.rendered = function (){
         $('#editActionForm').parsley({trigger: 'change'});
     };

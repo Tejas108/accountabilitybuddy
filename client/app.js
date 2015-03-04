@@ -44,7 +44,9 @@ var msg = {
 // Header Stuff
 Template.siteNav.helpers({
     alertCount: function () {
-        return Actions.find({alert: true}).count();
+        //return Meteor.users.find({'profile.hasAlert': true, 'profile.addedBy': Meteor.userId()});
+        //console.log(users);
+        return Meteor.users.find({'profile.hasAlert': true, 'profile.addedBy': Meteor.userId()}).count();
     }
 });
 
@@ -266,7 +268,7 @@ Template.editProfileForm.events({
         };
         Meteor.call('updateUser', id, userData);
         FlashMessages.sendSuccess(msg.profileUpdated);
-        Bender.go('viewProfile');
+        Router.go('viewProfile');
     },
     'click .cancel': function (e) {
         e.preventDefault();
@@ -695,7 +697,7 @@ Template.appHome.helpers({
         return Actions.find({client: Session.get('clientHasAlert'), alert: true}).count();
     },
     hasAlerts: function () {
-        var count = Actions.find({alert: true}).count();
+        var count = Meteor.users.find({'profile.hasAlert': true, 'profile.addedBy': Meteor.userId()}).count();
         if (count > 0) {
             Session.set('hasAlerts', true);
         } else {
