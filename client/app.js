@@ -280,7 +280,7 @@ Template.editProfileForm.events({
 Template.createSessionForm.events({
     'submit': function (e, t) {
         e.preventDefault();
-        var date = moment(t.find('#datepicker').value).format('YYYY-M-D');
+        var date = moment(t.find('#datepicker').value).format('MMM-DD-YYYY');
         var sessionData = {
             title: t.find('.stitle').value,
             description: t.find('.sdescription').value,
@@ -308,7 +308,7 @@ Template.editSessionForm.helpers({
 Template.editSessionForm.events({
     'submit': function (e, t) {
         e.preventDefault();
-        var date = moment(t.find('#datepicker').value).format('YYYY-M-D');
+        var date = moment(t.find('#datepicker').value).format('MMM-DD-YYYY');
         var sessionData = {
             title: t.find('.stitle').value,
             description: t.find('.sdescription').value,
@@ -510,7 +510,7 @@ Template.editActionForm.events({
         } else if (resetStatus === "no") {
             alert = true;
         }
-        var date = moment(t.find('#datepicker').value).format('YYYY-M-D');
+        var date = moment(t.find('#datepicker').value).format('MMM-DD-YYYY');
         var actionData = {
             title: t.find('.atitle').value,
             description: t.find('.adescription').value,
@@ -708,7 +708,6 @@ Template.appHome.helpers({
     }
 });
 
-
 Template.appHome.events({
     'click .client .client-alert-title': function (e) {
         e.preventDefault();
@@ -721,7 +720,6 @@ Template.appHome.events({
         $(e.currentTarget).parent().find('ul.actionList').fadeToggle();
     }
 });
-
 
 Template.actionAlerts.helpers({
     alerts: function () {
@@ -737,7 +735,6 @@ Template.actionAlerts.events({
         Router.go('editAction', {_id: this._id});
     }
 });
-
 
 //Email
 

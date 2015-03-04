@@ -35,6 +35,8 @@ if(Meteor.isClient) {
 
     Template.editActionForm.rendered = function (){
         $('#editActionForm').parsley({trigger: 'change'});
+        var date = moment($('#datepicker').attr('placeholder')).format('YYYY-MM-DD');
+        $('#datepicker').val(date);
     };
 
     Template.statusList.rendered = function (){
