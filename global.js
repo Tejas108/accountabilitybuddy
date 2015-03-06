@@ -314,7 +314,8 @@ if(Meteor.isClient) {
     });
 
     UI.registerHelper('pastDue',function(a){
-       if(moment(a).format('M/D/YYYY') < moment(new Date).format('M/D/YYYY')){
+       if(moment(a).format('YYYY-MM-DD') < moment(new Date).format('YYYY-MM-DD')){
+           console.log("past date: " + moment(a).format('YYYY-MM-DD') + " current Date: " + moment(new Date).format('YYYY-MM-DD'));
            return 'past-due'
        }
     });

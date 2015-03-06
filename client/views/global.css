@@ -216,6 +216,11 @@ section header {
 }
 
 /* Buttons */
+
+.btn:focus {
+    outline: none;
+}
+
 .btn-title {
     text-align: left;
     color: #fff;
@@ -223,6 +228,12 @@ section header {
 
 .btn {
     border-radius: 0;
+    color: #fff;
+}
+
+.btn-primary[disabled]:focus {
+    background-color: transparent;
+    border-color: #fff;
     color: #fff;
 }
 
@@ -632,6 +643,13 @@ input[type="date"]::-webkit-input-placeholder,
 input[type="password"]::-webkit-input-placeholder{
     color: #faebd7;
     opacity: 0.5;
+}
+
+.form-control:focus {
+    border-bottom: 1px solid #4cae4c;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 
 /* login */
