@@ -957,3 +957,11 @@ canvas {
         margin-left: 0;
     }
 }
+
+.login-title {
+    background: url('logo-lrg-wh.png') no-repeat;
+    width: 293px;
+    height: 104px;
+    margin: 0 auto 10px;
+    display: block;
+}

@@ -18,13 +18,13 @@ Meteor.startup(function() {
             var subject = 'Past due action item - Accountability Buddy';
             var tmpl = 'overdue-action';
             //console.log("pastDue: "+pastDueActions);
+            var from = 'no-reply@accountabilitybuddy.biz';
             for (var i = 0; i < past.length; i++) {
                 //console.log(past[i].client);
                 var user = Meteor.users.findOne({_id:past[i].client});
                 var userName = user.profile.name;
                 var userEmail = user.profile.email;
                 var title = past[i].title;
-                var from = 'no-reply@accountabilitybuddy.biz';
                 sendNotify(userEmail, from, subject, text, userName, tmpl, title);
             }
         }
