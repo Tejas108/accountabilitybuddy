@@ -208,6 +208,11 @@ section header {
     content: "\f06a";
     padding-right: 5px;
 }
+
+.past-due i::before {
+    content: "";
+}
+
 .due-date-client {
     font-weight: bold;
     float: right;
