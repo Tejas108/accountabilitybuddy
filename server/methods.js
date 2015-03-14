@@ -4,18 +4,19 @@ Meteor.methods({
         Meteor.users.find().observe({
             added:function(user){
 
-                if(!user.profile.welcomeEmailSend){
+                if(user.profile.welcomeEmailSend == "false"){
+
                     var text = "Welcome to your Accountability Buddy, your account has been set up! Log in at the link below.";
-                    Email.send({
-                        html: Handlebars.templates['newClient']({ name: user.profile.name, username: user.username, password: user.profile.password, text:text }),
-                        from: "noreply@accountabilitybuddy.biz",
-                        to: user.profile.email,
-                        subject: "Welcome to your Accountability Buddy",
-                        text: text
-                    });
+                        Email.send({
+                            html: Handlebars.templates['newClient']({ name: user.profile.name, username: user.username, password: user.profile.password, text:text }),
+                            from: "no-reply@accountabilitybuddy.biz",
+                            to: user.profile.email,
+                            subject: "Welcome to your Accountability Buddy",
+                            text: text
+                        });
                     Meteor.users.update({_id:user._id},{$set:{'profile.welcomeEmailSend':true,'profile.password':""}});
-                }else {
-                    return false
+                    }else {
+                        return false
                 }
             }
         })

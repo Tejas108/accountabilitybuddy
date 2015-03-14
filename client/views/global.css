@@ -853,7 +853,7 @@ p {
 
 /* Misc */
 
-.no-alerts, .no-inactive, .no-sessions {
+.no-alerts, .no-inactive, .no-sessions, .client-no-sessions {
     color: #fff;
     margin: 20% auto 0 auto;
     font-family: 'Raleway';
@@ -866,7 +866,7 @@ p {
     list-height: 1.5em;
 }
 
-.no-alerts i,.no-inactive i, .no-sessions i {
+.no-alerts i,.no-inactive i, .no-sessions i, .client-no-sessions i {
     font-size: 2em;
     margin-bottom: 1em;
     color: #fff;
@@ -966,7 +966,13 @@ canvas {
 .login-title {
     background: url('logo-lrg-wh.png') no-repeat;
     width: 293px;
-    height: 104px;
+    height: 95px;
     margin: 0 auto 10px;
     display: block;
+}
+
+.modal-alert {
+    padding: 0 0 1em 0;
+    margin: 0;
+    color:#d9534f;
 }

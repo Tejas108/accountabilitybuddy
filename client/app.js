@@ -25,6 +25,7 @@ var msg = {
     confirmActionDelete: "Are you sure you want to delete this Action Item?",
     confirmSessionDelete: "Are you sure you want to delete this Session?",
     confirmClientDelete: "Are you sure you want to delete this Client?",
+    confirmClientInactive: "Setting the client inactive will permanently delete all their sessions and actions. Are you sure you want to mark them as inactive?",
     // Flash
     actionCreated: "Action Created!",
     actionSaved: "Action Updated!",
@@ -164,6 +165,12 @@ Template.editClientForm.helpers({
 });
 
 Template.editClientForm.events({
+    'change #isActive': function(e,t){
+        var status = $(e.target).val();
+        if(status != "true"){
+            bootbox.alert("<h3 class=modal-alert>Alert!</h3> Be aware that setting a client as inactive will permanently remove all of their sessions and actions.");
+        }
+    },
     'click .save': function (e, t) {
         e.preventDefault();
         var id = Session.get('activeClient');
@@ -208,7 +215,6 @@ Template.editClientForm.events({
             sendEmail('updateProfile');
             Session.set('statusChange', false);
         }
-
         Router.go('clientShow');
         FlashMessages.sendSuccess(msg.clientUpdated);
     },
@@ -828,3 +834,5 @@ function sendCoachEmail(action) {
 
 
 //TODO: Add email coach in nav
+//TODO: Welcome email send to new user as many times as coach's client count
+//TODO: Emails have tejas.monteverdi@gmail.com as from address
