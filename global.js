@@ -344,7 +344,7 @@ if(Meteor.isServer){
     //});
 
     Meteor.startup(function(){
-        process.env.MAIL_URL="smtp://tejas.monteverdi%40gmail.com:fordyl0307@smtp.gmail.com:465/";
+        process.env.MAIL_URL="smtp://support%40accountabilitybuddy.biz:fordyl0307@smtp.gmail.com:465/";
     });
 
 }
