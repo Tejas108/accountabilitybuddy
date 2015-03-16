@@ -5,24 +5,24 @@ Meteor.methods({
         //var user = Meteor.users.findOne({_id:clientData._id});
         //console.log(user._id);
 
-        Meteor.users.find().observe({
-            added:function(user){
-                var welcomeSent = user.profile.welcomeEmailSend;
-                if(!welcomeSent && user.profile.isClient && user.profile.isActive){
-                    var text = "Welcome to your Accountability Buddy, your account has been set up! Log in at the link below.";
-                    Email.send({
-                        html: Handlebars.templates['newClient']({ name: user.profile.name, username: user.username, password: user.profile.password, text:text }),
-                        from: "no-reply@accountabilitybuddy.biz",
-                        to: user.profile.email,
-                        subject: "Welcome to your Accountability Buddy",
-                        text: text
-                    });
-                    Meteor.users.update({_id:user._id},{$set:{'profile.welcomeEmailSend':true,'profile.password':""}});
-                }else {
-                    return false
-                }
-            }
-        })
+        //Meteor.users.find({'profile.welcomeEmailSend':false}).observe({
+        //    added:function(user){
+        //        //var welcomeSent = this.profile.welcomeEmailSend;
+        //        //if(!welcomeSent && user.profile.isClient && user.profile.isActive){
+        //        //    var text = "Welcome to your Accountability Buddy, your account has been set up! Log in at the link below.";
+        //        //    Email.send({
+        //        //         html: Handlebars.templates['newClient']({ name: user.profile.name, username: user.username, password: user.profile.password, text:text }),
+        //        //        from: "no-reply@accountabilitybuddy.biz",
+        //        //        to: user.profile.email,
+        //        //        subject: "Welcome to your Accountability Buddy",
+        //        //        text: text
+        //        //    });
+        //        //    Meteor.users.update({_id:user._id},{$set:{'profile.welcomeEmailSend':true,'profile.password':""}});
+        //        //}else {
+        //        //    return false;
+        //        //}
+        //    }
+        //})
 
     },
     updateClient:function(id,clientData){
@@ -99,5 +99,9 @@ Meteor.methods({
             });
 
         }
+    },
+    removeAllUsers:function(){
+        Meteor.users.remove({});
     }
 });
+

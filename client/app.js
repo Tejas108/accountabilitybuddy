@@ -111,18 +111,21 @@ Template.addClientForm.events({
                 welcomeEmailSend: false
             }
         };
-
         Meteor.call('addNewClient', clientData,function(err){
-            if(err){
-                bootbox.alert("Username already exists");
-                return;
-            }else {
+            if(!err){
                 Router.go('clientList');
                 FlashMessages.sendSuccess(msg.clientCreated);
-                sendEmail('newClient');
+
+            }else {
+                //bootbox.alert(err);
+                //console.log(err);
+                return
             }
         });
-
+        //Meteor.call('addNewClient', clientData);
+        //Router.go('clientList');
+        //FlashMessages.sendSuccess(msg.clientCreated);
+        ////sendEmail('newClient');
     },
     'click .cancel': function (e) {
         e.preventDefault();

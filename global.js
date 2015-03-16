@@ -337,16 +337,30 @@ if(Meteor.isClient) {
 }
 
 if(Meteor.isServer){
-    //Meteor.users.allow({
-    //    insert:function(userId){
-    //        return true;
-    //    }
-    //});
-
     Meteor.startup(function(){
         process.env.MAIL_URL="smtp://support%40accountabilitybuddy.biz:fordyl0307@smtp.gmail.com:465/";
-    });
 
+        Accounts.onCreateUser(function(options, user) {
+            if(!options || !user) {
+                console.log('error creating user');
+                return;
+            } else {
+                if(options.profile) {
+                    user.profile = options.profile;
+                    var text = "Welcome to your Accountability Buddy, your account has been set up! Log in at the link below.";
+                    Email.send({
+                        html: Handlebars.templates['newClient']({ name: user.profile.name, username: user.username, password: user.profile.password, text:text }),
+                        from: "no-reply@accountabilitybuddy.biz",
+                        to: user.profile.email,
+                        subject: "Welcome to your Accountability Buddy",
+                        text: text
+                    });
+                    Meteor.users.update({_id:user._id},{$set:{'profile.welcomeEmailSend':true,'profile.password':""}});
+                }
+            }
+            return user;
+        });
+    });
 }
 
 SinglePageLogin.config({
