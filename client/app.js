@@ -841,8 +841,11 @@ function sendCoachEmail(action) {
 
     Meteor.call('sendCoachEmail', Meteor.userId(), coachEmail, from, subject, text, userName, coachName, tmpl, title, status, statusReason);
 }
+Template.login.render = function(){
+
+    $('#new-account').html("Create Coach Account");
+
+}
 
 
 //TODO: Add email coach in nav
-//TODO: Welcome email send to new user as many times as coach's client count
-//TODO: Emails have tejas.monteverdi@gmail.com as from address

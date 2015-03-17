@@ -669,7 +669,7 @@ input[type="password"]::-webkit-input-placeholder{
 
 #new-account, #forgot-password {
     color: #fff;
-    padding: 10px 16px;
+    padding: 10px 10px;
     /*width: 50%;*/
     display: inline-block;
     font-size: 0.95em;
