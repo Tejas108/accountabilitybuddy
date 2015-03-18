@@ -199,7 +199,7 @@ section header {
     opacity: .5;
 }
 .due-date-client.past-due {
-    color: #d9534f;
+    color: #ff0000;
 }
 
 .past-due::before {
@@ -669,7 +669,7 @@ input[type="password"]::-webkit-input-placeholder{
 
 #new-account, #forgot-password {
     color: #fff;
-    padding: 10px 16px;
+    padding: 10px 10px;
     /*width: 50%;*/
     display: inline-block;
     font-size: 0.95em;
