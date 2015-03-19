@@ -45,9 +45,13 @@ var msg = {
 // Header Stuff
 Template.siteNav.helpers({
     alertCount: function () {
-        //return Meteor.users.find({'profile.hasAlert': true, 'profile.addedBy': Meteor.userId()});
-        //console.log(users);
         return Meteor.users.find({'profile.hasAlert': true, 'profile.addedBy': Meteor.userId()}).count();
+    },
+    coachEmail: function() {
+        if (Meteor.userId()){
+            var coachId = Meteor.userId('profile.addedBy');
+            return Meteor.users.findOne({_id: coachId}).profile.email;
+        }
     }
 });
 
@@ -843,5 +847,4 @@ function sendCoachEmail(action) {
 }
 
 
-//TODO: Add email coach in nav
 //TODO: Show response error if not filled out
