@@ -898,6 +898,9 @@ canvas {
     .btn-title {
         font-size: 2em !important;
     }
+    .btn-primary.createAction {
+        margin-top: 12px;
+    }
     h1 {
         font-size: 3em;
     }
@@ -975,4 +978,27 @@ canvas {
     padding: 0 0 1em 0;
     margin: 0;
     color:#d9534f;
+}
+
+/* Phone Field */
+.iti-flag {background-image: url("flags.png");}
+.intl-tel-input {
+    display: block !important;
+}
+
+#error-msg {
+    font-size: 0.9em;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    line-height: 0.9em;
+    opacity: 0;
+    -moz-opacity: 0;
+    -webkit-opacity: 0;
+    padding: 3px;
+    color: #fff;
+    background: #B94A48;
+    display: block;
+    transition: all .3s ease-in;
+    -webkit-transition: all .3s ease-in;
+    opacity: 1;
 }

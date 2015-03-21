@@ -13,15 +13,16 @@
                         <form role="form" id="editUserForm">
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" name="name" id="name" class="form-control name"  required data-parsley-minlength="3" value="{{profile.name}}">
+                                <input type="text" name="name" id="name" class="form-control name" required data-parsley-minlength="3" value="{{profile.name}}">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="text" name="email" id="email" class="form-control email"  required data-parsley-type="email" value="{{profile.email}}">
+                                <input type="text" name="email" id="email" class="form-control email" required data-parsley-type="email" value="{{profile.email}}">
                             </div>
                             <div class="form-group">
                                 <label for="phone">Phone</label>
-                                <input type="tel" name="phone" id="phone" class="form-control phone"  data-parsley-type="digits" value="{{profile.phone}}">
+                                <input type="tel" name="phone" id="phone" class="form-control phone" required data-parsley-minlength="3" value="{{profile.phone}}">
+                                <span id="error-msg" class="hide">Invalid number</span>
                             </div>
                             <div class="form-group">
                                 <label for="isActive">Client Status:</label>

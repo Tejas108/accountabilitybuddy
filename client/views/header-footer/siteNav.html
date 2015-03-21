@@ -1,12 +1,14 @@
 <template name="siteNav">
     <nav id="header-nav" class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-header">
-            {{#if currentUser.profile.isClient}}
-            {{else}}
-                <a class="navbar-back goback" href="#"><i class="fa fa-angle-left"></i></a>
-                {{#if alertCount}}
-                    <a class="header-alert" href="{{pathFor 'appHome'}}"><span
-                    class="alertNumber">{{alertCount}}</span><i class="fa fa-bell"></i></a>
+            {{#if currentUser}}
+                {{#if currentUser.profile.isClient}}
+                {{else}}
+                    <a class="navbar-back goback" href="#"><i class="fa fa-angle-left"></i></a>
+                    {{#if alertCount}}
+                        <a class="header-alert" href="{{pathFor 'appHome'}}"><span
+                                class="alertNumber">{{alertCount}}</span><i class="fa fa-bell"></i></a>
+                    {{/if}}
                 {{/if}}
             {{/if}}
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -18,9 +20,14 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a class="about" href="{{pathFor 'aboutPage'}}"><i class="fa fa-leaf"></i> About</a></li>
-                <li><a class="editProfile" href="{{pathFor 'viewProfile'}}"><i class="fa fa-user"></i> My Profile</a></li>
-                {{#if coachEmail}}
-                    <li><a href="mailto:{{coachEmail}}"><i class="fa fa-envelope-o"></i> Contact Coach</a></li>
+                <li><a class="editProfile" href="{{pathFor 'viewProfile'}}"><i class="fa fa-user"></i> My Profile</a>
+                </li>
+                {{#if currentUser}}
+                    {{#if currentUser.profile.isClient}}
+                        {{#if coachEmail}}
+                            <li><a href="mailto:{{coachEmail}}"><i class="fa fa-envelope-o"></i> Contact Coach</a></li>
+                        {{/if}}
+                    {{/if}}
                 {{/if}}
                 <li><a href="#" class="logout"><i class="fa fa-sign-out"></i> Log Out</a></li>
             </ul>

@@ -9,10 +9,12 @@ if(Meteor.isClient) {
 
     Template.addClientForm.rendered = function (){
         $('#addUserForm').parsley({trigger: 'change'});
+        formatPhone();
     };
 
     Template.editClientForm.rendered = function (){
         $('#editUserForm').parsley({trigger: 'change'});
+        formatPhone();
     };
 
     Template.createSessionForm.rendered = function (){
@@ -31,6 +33,7 @@ if(Meteor.isClient) {
 
     Template.editProfileForm.rendered = function (){
         $('#editUserForm').parsley({trigger: 'change'});
+        formatPhone();
     };
 
     Template.editActionForm.rendered = function (){
@@ -331,6 +334,32 @@ if(Meteor.isClient) {
     });
 
     Meteor.startup(function(){
+        formatPhone = function() {
+            var telInput = $("#phone");
+            telInput.intlTelInput({
+                defaultCountry: "us"});
+            errorMsg = $("#error-msg"),
+                validMsg = $("#valid-msg");
+            // on blur: validate
+            telInput.blur(function() {
+                if ($.trim(telInput.val())) {
+                    if (telInput.intlTelInput("isValidNumber")) {
+                        validMsg.removeClass("hide");
+                    } else {
+                        telInput.addClass("error");
+                        errorMsg.removeClass("hide");
+                        validMsg.addClass("hide");
+                    }
+                }
+            });
+
+// on keydown: reset
+            telInput.keydown(function() {
+                telInput.removeClass("error");
+                errorMsg.addClass("hide");
+                validMsg.addClass("hide");
+            });
+        }
 
     });
 

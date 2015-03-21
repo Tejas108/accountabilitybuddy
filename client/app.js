@@ -49,8 +49,10 @@ Template.siteNav.helpers({
     },
     coachEmail: function() {
         if (Meteor.userId()){
-            var coachId = Meteor.userId('profile.addedBy');
+            var coachId = Meteor.users.findOne({_id: Meteor.userId()}).profile.addedBy;
             return Meteor.users.findOne({_id: coachId}).profile.email;
+        }else {
+            return
         }
     }
 });
@@ -98,7 +100,8 @@ Template.addClientForm.events({
         var dateCreated = moment().format('YYYY-M-D');
         var clientName = t.find('.clientName').value;
         var clientEmail = t.find('.clientEmail').value;
-        var clientPhone = t.find('.clientPhone').value;
+        //var clientPhone = t.find('.clientPhone').value;
+        var clientPhone = $("#phone").intlTelInput("getNumber");
         var clientPassword = t.find('.clientPassword').value;
         var clientData = {
             username: t.find('.username').value,
@@ -194,7 +197,7 @@ Template.editClientForm.events({
         var date = moment().format('YYYY-M-D');
         var clientName = t.find('.name').value;
         var clientEmail = t.find('.email').value;
-        var clientPhone = t.find('.phone').value;
+        var clientForm = $("#phone").intlTelInput("getNumber");
         var clientStatus = $('#isActive option:selected').val();
         if (clientStatus === "true") {
             clientStatus = true;
@@ -270,13 +273,13 @@ Template.editProfileForm.helpers({
 });
 
 Template.editProfileForm.events({
-    'click .save': function (e, t) {
+    'submit': function (e, t) {
         e.preventDefault();
         var id = Meteor.userId();
         var username = t.find('.username').value;
         var name = t.find('.name').value;
         var email = t.find('.email').value;
-        var phone = t.find('.phone').value;
+        var phone = $("#phone").intlTelInput("getNumber");
         var date = moment().format('YYYY-M-D');
         var userData = {
             username: username,
@@ -848,3 +851,4 @@ function sendCoachEmail(action) {
 
 
 //TODO: Show response error if not filled out
+//TODO: Instruction page
