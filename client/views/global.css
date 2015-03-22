@@ -60,12 +60,27 @@ p, ul {
 
 .static-container {
     line-height: 1.5em;
-    padding: 0 10px;
+    padding: 0 20px;
+    color: #fff;
+    margin-bottom: 2em;
 }
 
 .static-container,.static-container p {
     font-size: 1em;
-    margin-bottom: 2em;
+    margin-left: 0;
+}
+
+.static-container a,
+.static-container a:hover,
+.static-container a:visited,
+.footer-text a,
+.footer-text a:hover,
+.footer-text a:visited{
+    color: #fff;
+}
+
+.static-container a:active,.footer-text a:active {
+    color: #4cae4c;
 }
 
 .static-container li {
@@ -596,6 +611,13 @@ background: rgba(0,0,0,0.7);
 #footer-nav .btn.active,#footer-nav .btn:active {
     box-shadow: none;
 }
+
+.footer-text {
+    color: #fff;
+    margin-bottom: .5em;
+    margin-left: 20px;
+}
+
 
 .alert {
     margin-bottom: 0;
